@@ -1,23 +1,18 @@
 {
   "intents": [
     {
-      "intent": "AddPlayerIntent",
-      "slots": [
-        {
-          "name": "PlayerName",
-          "type": "LIST_OF_PLAYER_NAMES"
-        }
-      ]
+      "intent": "NeedToTakeIntent",
+      "slots": []
     },
     {
-      "intent": "AddScoreIntent",
+      "intent": "JustTookIntent",
       "slots": [
         {
-          "name": "PlayerName",
-          "type": "LIST_OF_PLAYER_NAMES"
+          "name": "DrugName",
+          "type": "LIST_OF_DRUG_NAMES"
         },
         {
-          "name": "ScoreNumber",
+          "name": "NumDoses",
           "type": "AMAZON.NUMBER"
         }
       ]
@@ -27,19 +22,11 @@
       "slots": []
     },
     {
-      "intent": "NewGameIntent",
-      "slots": []
-    },
-    {
       "intent": "HelpIntent",
       "slots": []
     },
     {
       "intent": "ExitIntent",
-      "slots": []
-    },
-    {
-      "intent": "TellScoresIntent",
       "slots": []
     }
   ]
