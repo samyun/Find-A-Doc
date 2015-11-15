@@ -32,17 +32,17 @@ public class findadocManager {
     /**
      * Intent slot for the type of pain.
      */
-    private static final String TYPE_PAIN = "TypeOfPain";
+    private static final String SLOT_TYPE_PAIN = "TypeOfPain";
 
     /**
      * Intent slot for area of body with the issue.
      */
-    private static final String TYPE_AREA = "AreaOfPain";
+    private static final String SLOT_TYPE_AREA = "AreaOfPain";
 
     /**
      * Intent slot for duration.
      */
-    private static final String AMAZON_DURATION = "TimeDuration";
+    private static final String SLOT_AMAZON_DURATION = "TimeDuration";
     
     private final findadocDao findadocDao;
 
@@ -95,7 +95,7 @@ public class findadocManager {
        }       runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
       
         String drugName =
-                findadocTextUtil.getDrugName(intent.getSlot(SLOT_DRUG_NAME).getValue());
+                findadocTextUtil.getDrugName(intent.getSlot(SLOT_TYPE_PAIN).getValue());
         if (drugName == null) {
             String speechText = "Sorry, I didn't get that. What drug did you take?";
             return getAskSpeechletResponse(speechText, speechText);
@@ -110,7 +110,7 @@ public class findadocManager {
         long dose = 0;
 		
         try {
-        	dose = Integer.parseInt(intent.getSlot(SLOT_NUM_DOSES).getValue());
+        	dose = Integer.parseInt(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
         } catch (NumberFormatException e) {
             String speechText = "Sorry, I did not hear the dose. Please say again?";
             return getAskSpeechletResponse(speechText, speechText);
@@ -449,16 +449,13 @@ public class findadocManager {
     }
 
 	public SpeechletResponse getPainIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
+        String drugName = intent.getSlot(SLOT_AMAZON_DURATION).getValue();
+        
+        
+		return getTellSpeechletResponse(drugName);
 	}
 
 	public SpeechletResponse getSneezeIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public SpeechletResponse getCoughIntentResponse(Intent intent, Session session, SkillContext skillContext) {
 		// TODO Auto-generated method stub
 		return null;
 	}

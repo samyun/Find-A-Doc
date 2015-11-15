@@ -8,10 +8,6 @@
           "type": "AMAZON.DURATION"
         },
         {
-          "name": "TypeOfPain",
-          "type": "TYPE_PAIN"
-        },
-        {
           "name": "AreaOfPain",
           "type": "TYPE_AREA"
         }

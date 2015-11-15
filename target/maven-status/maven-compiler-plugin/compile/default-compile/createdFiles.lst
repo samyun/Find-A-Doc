@@ -1,5 +1,5 @@
-findadoc\storage\findadocGame.class
 findadoc\findadocSpeechletRequestStreamHandler.class
+findadoc\storage\findadocRunnerData.class
 findadoc\findadocManager.class
 findadoc\findadocSpeechlet.class
 findadoc\findadocTextUtil.class
@@ -7,6 +7,6 @@ findadoc\storage\findadocDynamoDbClient.class
 findadoc\storage\findadocUserDataItem$findadocGameDataMarshaller.class
 findadoc\storage\findadocUserDataItem.class
 findadoc\storage\findadocUserDataItem$findadocGameDataMarshaller$1.class
-findadoc\storage\findadocGameData.class
+findadoc\storage\findadocRunner.class
 findadoc\storage\findadocDao.class
 findadoc\SkillContext.class
