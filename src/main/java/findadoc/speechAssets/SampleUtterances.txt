@@ -1,129 +1,303 @@
-NeedToTakeIntent what do I need to take
-NeedToTakeIntent what medicine I need
-NeedToTakeIntent what medication do I need to take
-NeedToTakeIntent what I need to take
-NeedToTakeIntent what meds do I need to take
-NeedToTakeIntent what meds I need to take
-NeedToTakeIntent how many meds do I need to take
-NeedToTakeIntent what do I need
-NeedToTakeIntent do I need drugs
-NeedToTakeIntent if I need drugs
-NeedToTakeIntent how much I need
-NeedToTakeIntent how much medicine do I need to take 
-NeedToTakeIntent how many pills do I need
-NeedToTakeIntent do I need any tablets
-NeedToTakeIntent do I need any drugs
-NeedToTakeIntent do I need any meds
-NeedToTakeIntent do I need any pills
-NeedToTakeIntent do I need any medicine
-NeedToTakeIntent do I have to take any meds
-NeedToTakeIntent do I have to take any pills
-NeedToTakeIntent do I have to take any drugs 
-NeedToTakeIntent did I take my medicine
-NeedToTakeIntent did I take my meds
-NeedToTakeIntent did I take my drugs
-NeedToTakeIntent did I take my pills
-NeedToTakeIntent did I took my medicine
-NeedToTakeIntent did I took my meds
-NeedToTakeIntent did I took my drugs
-NeedToTakeIntent did I took my pills
+PainIntent I'm in pain
+PainIntent I'm hurt
+PainIntent I am in pain
+PainIntent hurting
+PainIntent paining
+PainIntent I am hurt
+PainIntent I pain
+PainIntent I hurt
+PainIntent Hurt pain
+PainIntent pain hurt
+PainIntent My {area} is in pain
+PainIntent My {area} hurts
+PainIntent My {area} hurt
+PainIntent {area} hurt
+PainIntent {area} is hurt
+PainIntent {area} is in pain
+PainIntent {area} in pain
+PainIntent {area} pain
+PainIntent {area} pains
+PainIntent {area} hurts
+PainIntent hurt {area}
+PainIntent pain in {area}
+PainIntent pain {area}
+PainIntent My {area} is hurt
+PainIntent My {area} is hurt for {time}
+PainIntent My {area} is in pain for {time}
+PainIntent My {area} has hurt for {time}
+PainIntent My {area} hurt since {time}
+PainIntent {area} hurt for {time}
+PainIntent {area} is hurt for {time}
+PainIntent {area} is in pain for {time}
+PainIntent {area} in pain for {time}
+PainIntent {area} pain for {time}
+PainIntent {area} pains for {time}
+PainIntent {area} hurts for {time}
+PainIntent hurt {area} for {time}
+PainIntent pain in {area} for {time}
+PainIntent pain {area} for {time}
+PainIntent My {area} is in pain since {time}
+PainIntent My {area} hurts since {time}
+PainIntent My {area} hurt since {time}
+PainIntent {area} hurt since {time}
+PainIntent {area} is hurt since {time}
+PainIntent {area} is in pain since {time}
+PainIntent {area} in pain since {time}
+PainIntent {area} pain since {time}
+PainIntent {area} pains since {time}
+PainIntent {area} hurts since {time}
+PainIntent hurt {area} since {time}
+PainIntent pain in {area} since {time}
+PainIntent pain {area} since {time}
+PainIntent My {area} is in pain since {time} ago
+PainIntent My {area} hurts since {time} ago
+PainIntent My {area} hurt since {time} ago
+PainIntent {area} hurt since {time} ago
+PainIntent {area} is hurt since {time} ago
+PainIntent {area} is in pain since {time} ago
+PainIntent {area} in pain since {time} ago
+PainIntent {area} pain since {time} ago
+PainIntent {area} pains since {time} ago
+PainIntent {area} hurts since {time} ago
+PainIntent hurt {area} since {time} ago
+PainIntent pain in {area} since {time} ago
+PainIntent pain {area} since {time} ago
+PainIntent I've been in pain for {time}
+PainIntent I've been in pain since {time}
+PainIntent I've been in pain since {time} ago
 
-JustTookIntent {NumDoses} doses of {DrugName}
-JustTookIntent {NumDoses} pills of {DrugName}
-JustTookIntent {NumDoses} tablets of {DrugName}
-JustTookIntent {NumDoses} units of {DrugName}
-JustTookIntent {NumDoses} grams of {DrugName}
-JustTookIntent I just took {NumDoses} doses of {DrugName}
-JustTookIntent I just took {NumDoses} pills of {DrugName}
-JustTookIntent I just took {NumDoses} tablets of {DrugName}
-JustTookIntent I just took {NumDoses} grams of {DrugName}
-JustTookIntent I just swallowed {NumDoses} doses of {DrugName}
-JustTookIntent I just took {NumDoses} units of {DrugName}
-JustTookIntent I just swallowed {NumDoses} units of {DrugName}
-JustTookIntent I just swallowed {NumDoses} pills of {DrugName}
-JustTookIntent I just swallowed {NumDoses} tablets of {DrugName}
-JustTookIntent I swallowed {NumDoses} doses of {DrugName}
-JustTookIntent I swallowed {NumDoses} pills of {DrugName}
-JustTookIntent I swallowed {NumDoses} tablets of {DrugName}
-JustTookIntent I took {NumDoses} doses of {DrugName}
-JustTookIntent I took {NumDoses} pills of {DrugName}
-JustTookIntent I took {NumDoses} tablets of {DrugName}
-JustTookIntent I just shot up {NumDoses} doses of {DrugName}
-JustTookIntent I just shot up {NumDoses} pills of {DrugName}
-JustTookIntent I just shot up {NumDoses} tablets of {DrugName}
-JustTookIntent I just smoked {NumDoses} doses of {DrugName}
-JustTookIntent I just smoked {NumDoses} pills of {DrugName}
-JustTookIntent I just smoked {NumDoses} tablets of {DrugName}
-JustTookIntent I just injected {NumDoses} doses of {DrugName}
-JustTookIntent I just injected {NumDoses} pills of {DrugName}
-JustTookIntent I just injected {NumDoses} tablets of {DrugName}
-JustTookIntent I just snorted {NumDoses} doses of {DrugName}
-JustTookIntent I just snorted {NumDoses} pills of {DrugName}
-JustTookIntent I just snorted {NumDoses} tablets of {DrugName}
-JustTookIntent I shot up {NumDoses} doses of {DrugName}
-JustTookIntent I shot up {NumDoses} pills of {DrugName}
-JustTookIntent I shot up {NumDoses} tablets of {DrugName}
-JustTookIntent I smoked {NumDoses} doses of {DrugName}
-JustTookIntent I smoked {NumDoses} pills of {DrugName}
-JustTookIntent I smoked {NumDoses} tablets of {DrugName}
-JustTookIntent I injected {NumDoses} doses of {DrugName}
-JustTookIntent I injected {NumDoses} pills of {DrugName}
-JustTookIntent I injected {NumDoses} tablets of {DrugName}
-JustTookIntent I snorted {NumDoses} doses of {DrugName}
-JustTookIntent I snorted {NumDoses} pills of {DrugName}
-JustTookIntent I snorted {NumDoses} tablets of {DrugName}
-JustTookIntent I snorted {NumDoses} grams of {DrugName}
-JustTookIntent I choked down {NumDoses} doses of {DrugName}
-JustTookIntent I choked down {NumDoses} pills of {DrugName}
-JustTookIntent I choked down {NumDoses} tablets of {DrugName}
-JustTookIntent I just choked down {NumDoses} doses of {DrugName}
-JustTookIntent I just choked down {NumDoses} pills of {DrugName}
-JustTookIntent I just choked down {NumDoses} tablets of {DrugName}
+SneezeIntent I'm sneezing
+SneezeIntent I am sneezing
+SneezeIntent I have been sneezing
+SneezeIntent I keep sneezing
+SneezeIntent Sneezing
+SneezeIntent I can't stop sneezing
+SneezeIntent I cannot stop sneezing
+SneezeIntent Sneezes
+SneezeIntent Sneeze
+SneezeIntent Can't stop sneezing
+SneezeIntent Keep sneezing
+SneezeIntent I constantly sneeze
+SneezeIntent I'm sneezing constantly
+SneezeIntent I'm sneezing for {time}
+SneezeIntent I am sneezing for {time}
+SneezeIntent I have been sneezing for {time}
+SneezeIntent I keep sneezing for {time}
+SneezeIntent Sneezing for {time}
+SneezeIntent I can't stop sneezing for {time}
+SneezeIntent I cannot stop sneezing for {time}
+SneezeIntent Sneezes for {time}
+SneezeIntent Sneeze for {time}
+SneezeIntent Can't stop sneezing for {time}
+SneezeIntent Keep sneezing for {time}
+SneezeIntent I constantly sneeze for {time}
+SneezeIntent I'm sneezing constantly for {time}
+SneezeIntent I'm sneezing since {time} ago
+SneezeIntent I am sneezing since {time} ago
+SneezeIntent I have been sneezing since {time} ago
+SneezeIntent I keep sneezing since {time} ago
+SneezeIntent Sneezing since {time} ago
+SneezeIntent I can't stop sneezing since {time} ago
+SneezeIntent I cannot stop sneezing since {time} ago
+SneezeIntent Sneezes since {time} ago
+SneezeIntent Sneeze since {time} ago
+SneezeIntent Can't stop sneezing since {time} ago
+SneezeIntent Keep sneezing since {time} ago
+SneezeIntent I constantly sneeze since {time} ago
+SneezeIntent I'm sneezing constantly since {time} ago
+SneezeIntent I'm sneezing since {time}
+SneezeIntent I am sneezing since {time}
+SneezeIntent I have been sneezing since {time}
+SneezeIntent I keep sneezing since {time}
+SneezeIntent Sneezing since {time}
+SneezeIntent I can't stop sneezing since {time}
+SneezeIntent I cannot stop sneezing since {time}
+SneezeIntent Sneezes since {time}
+SneezeIntent Sneeze since {time}
+SneezeIntent Can't stop sneezing since {time}
+SneezeIntent Keep sneezing since {time}
+SneezeIntent I constantly sneeze since {time}
+SneezeIntent I'm sneezing constantly since {time}
 
 
+CoughIntent I'm coughing
+CoughIntent I am coughing
+CoughIntent I have been coughing
+CoughIntent I keep coughing
+CoughIntent Coughing
+CoughIntent I can't stop coughing
+CoughIntent I cannot stop coughing
+CoughIntent Coughs
+CoughIntent Cough
+CoughIntent Can't stop coughing
+CoughIntent Keep coughing
+CoughIntent I constantly cough
+CoughIntent I'm coughing constantly
+CoughIntent I'm coughing for {time}
+CoughIntent I am coughing for {time}
+CoughIntent I have been coughing for {time}
+CoughIntent I keep coughing for {time}
+CoughIntent Coughing for {time}
+CoughIntent I can't stop coughing for {time}
+CoughIntent I cannot stop coughing for {time}
+CoughIntent Coughs for {time}
+CoughIntent Cough for {time}
+CoughIntent Can't stop coughing for {time}
+CoughIntent Keep coughing for {time}
+CoughIntent I constantly cough for {time}
+CoughIntent I'm coughing constantly for {time}
+CoughIntent I'm coughing since {time} ago
+CoughIntent I am coughing since {time} ago
+CoughIntent I have been coughing since {time} ago
+CoughIntent I keep coughing since {time} ago
+CoughIntent Coughing since {time} ago
+CoughIntent I can't stop coughing since {time} ago
+CoughIntent I cannot stop coughing since {time} ago
+CoughIntent Coughs since {time} ago
+CoughIntent Cough since {time} ago
+CoughIntent Can't stop coughing since {time} ago
+CoughIntent Keep coughing since {time} ago
+CoughIntent I constantly cough since {time} ago
+CoughIntent I'm coughing constantly since {time} ago
+CoughIntent I'm coughing since {time}
+CoughIntent I am coughing since {time}
+CoughIntent I have been coughing since {time}
+CoughIntent I keep coughing since {time}
+CoughIntent Coughing since {time}
+CoughIntent I can't stop coughing since {time}
+CoughIntent I cannot stop coughing since {time}
+CoughIntent Coughs since {time}
+CoughIntent Cough since {time}
+CoughIntent Can't stop coughing since {time}
+CoughIntent Keep coughing since {time}
+CoughIntent I constantly cough since {time}
+CoughIntent I'm coughing constantly since {time}
 
-JustTookIntent I just took {NumDoses} dose of {DrugName}
-JustTookIntent I just took {NumDoses} pill of {DrugName}
-JustTookIntent I just took {NumDoses} tablet of {DrugName}
-JustTookIntent I just swallowed {NumDoses} dose of {DrugName}
-JustTookIntent I just swallowed {NumDoses} pill of {DrugName}
-JustTookIntent I just swallowed {NumDoses} tablet of {DrugName}
-JustTookIntent I swallowed {NumDoses} dose of {DrugName}
-JustTookIntent I swallowed {NumDoses} pill of {DrugName}
-JustTookIntent I swallowed {NumDoses} tablet of {DrugName}
-JustTookIntent I took {NumDoses} dose of {DrugName}
-JustTookIntent I took {NumDoses} pill of {DrugName}
-JustTookIntent I took {NumDoses} tablet of {DrugName}
-JustTookIntent I just shot up {NumDoses} dose of {DrugName}
-JustTookIntent I just shot up {NumDoses} pill of {DrugName}
-JustTookIntent I just shot up {NumDoses} tablet of {DrugName}
-JustTookIntent I just smoked {NumDoses} dose of {DrugName}
-JustTookIntent I just smoked {NumDoses} pill of {DrugName}
-JustTookIntent I just smoked {NumDoses} tablet of {DrugName}
-JustTookIntent I just injected {NumDoses} dose of {DrugName}
-JustTookIntent I just injected {NumDoses} pill of {DrugName}
-JustTookIntent I just injected {NumDoses} tablet of {DrugName}
-JustTookIntent I just snorted {NumDoses} dose of {DrugName}
-JustTookIntent I just snorted {NumDoses} pill of {DrugName}
-JustTookIntent I just snorted {NumDoses} tablet of {DrugName}
-JustTookIntent I shot up {NumDoses} dose of {DrugName}
-JustTookIntent I shot up {NumDoses} pill of {DrugName}
-JustTookIntent I shot up {NumDoses} tablet of {DrugName}
-JustTookIntent I smoked {NumDoses} dose of {DrugName}
-JustTookIntent I smoked {NumDoses} pill of {DrugName}
-JustTookIntent I smoked {NumDoses} tablet of {DrugName}
-JustTookIntent I injected {NumDoses} dose of {DrugName}
-JustTookIntent I injected {NumDoses} pill of {DrugName}
-JustTookIntent I injected {NumDoses} tablet of {DrugName}
-JustTookIntent I snorted {NumDoses} dose of {DrugName}
-JustTookIntent I snorted {NumDoses} pill of {DrugName}
-JustTookIntent I snorted {NumDoses} tablet of {DrugName}
-JustTookIntent I choked down {NumDoses} dose of {DrugName}
-JustTookIntent I choked down {NumDoses} pill of {DrugName}
-JustTookIntent I choked down {NumDoses} tablet of {DrugName}
-JustTookIntent I just choked down {NumDoses} dose of {DrugName}
-JustTookIntent I just choked down {NumDoses} pill of {DrugName}
-JustTookIntent I just choked down {NumDoses} tablet of {DrugName}
+
+SleepIntent I can't sleep
+SleepIntent I cannot sleep
+SleepIntent No sleep
+SleepIntent sleep no
+SleepIntent I'm not able to sleep
+SleepIntent I haven't been able to sleep
+SleepIntent I am not able to sleep
+SleepIntent I have not been able to sleep
+SleepIntent sleep
+SleepIntent sleeping
+SleepIntent sleep won't come
+SleepIntent can't sleep
+SleepIntent cannot sleep
+SleepIntent I need to sleep
+SleepIntent Trouble sleeping
+SleepIntent I am having trouble sleeping
+SleepIntent I need to be sleeping
+SleepIntent Sleep won't come
+
+EmotionIntent I am depressed
+EmotionIntent depressed
+EmotionIntent I keep getting depressed
+EmotionIntent I am feeling depressed
+EmotionIntent feeling depressed
+EmotionIntent depression
+EmotionIntent I keep feeling depressed
+EmotionIntent I'm feeling depressed
+EmotionIntent I am feeling depressed
+EmotionIntent feel depressed
+EmotionIntent I am sad
+EmotionIntent sad
+EmotionIntent I keep getting sad
+EmotionIntent I am feeling sad
+EmotionIntent feeling sad
+EmotionIntent sad
+EmotionIntent I keep feeling sad
+EmotionIntent I'm feeling sad
+EmotionIntent I am feeling sad
+EmotionIntent feel sad
+EmotionIntent I am angry
+EmotionIntent angry
+EmotionIntent I keep getting angry
+EmotionIntent I am feeling angry
+EmotionIntent feeling angry
+EmotionIntent angry
+EmotionIntent I keep feeling angry
+EmotionIntent I'm feeling angry
+EmotionIntent I am feeling angry
+EmotionIntent feel angry
+EmotionIntent I am suicidal
+EmotionIntent suicidal
+EmotionIntent I keep getting suicidal
+EmotionIntent I am feeling suicidal
+EmotionIntent feeling suicidal
+EmotionIntent suicidal
+EmotionIntent I keep feeling suicidal
+EmotionIntent I'm feeling suicidal
+EmotionIntent I am feeling suicidal
+EmotionIntent feel suicidal
+EmotionIntent I am mad
+EmotionIntent mad
+EmotionIntent I keep getting mad
+EmotionIntent I am feeling mad
+EmotionIntent feeling mad
+EmotionIntent mad
+EmotionIntent I keep feeling mad
+EmotionIntent I'm feeling mad
+EmotionIntent I am feeling mad
+EmotionIntent feel mad
+EmotionIntent I am emotional
+EmotionIntent emotional
+EmotionIntent I keep getting emotional
+EmotionIntent I am feeling emotional
+EmotionIntent feeling emotional
+EmotionIntent emotional
+EmotionIntent I keep feeling emotional
+EmotionIntent I'm feeling emotional
+EmotionIntent I am feeling emotional
+EmotionIntent feel emotional
+EmotionIntent I am emotion
+EmotionIntent emotion
+EmotionIntent I keep getting emotion
+EmotionIntent I am feeling emotion
+EmotionIntent feeling emotion
+EmotionIntent emotion
+EmotionIntent I keep feeling emotion
+EmotionIntent I'm feeling emotion
+EmotionIntent I am feeling emotion
+EmotionIntent feel emotion
+
+
+ToothIntent My tooth hurts
+ToothIntent My mouth hurts
+ToothIntent My teeth hurt
+ToothIntent My teeth are in pain
+ToothIntent My tooth is in pain
+ToothIntent My tooth pains
+ToothIntent I think I have a cavity
+ToothIntent I have a cavity
+ToothIntent teeth
+ToothIntent tooth
+ToothIntent mouth
+ToothIntent teeth hurt
+ToothIntent mouth hurts
+ToothIntent tooth hurts
+
+
+VisionIntent I can't see
+VisionIntent I cannot see
+VisionIntent eyes
+VisionIntent eye
+VisionIntent my eye
+VisionIntent my eyes
+VisionIntent sight
+VisionIntent see
+VisionIntent seeing
+VisionIntent eyes hurt
+VisionIntent my eyes hurt
+VisionIntent I'm having trouble seeing
+VisionIntent I am having trouble seeing
+VisionIntent trouble seeing
+VisionIntent My eyes are in pain
+VisionIntent My eyes are hurting
+
 
 HelpIntent help
 HelpIntent help me
@@ -160,10 +334,3 @@ ExitIntent exit
 ExitIntent cancel
 ExitIntent no
 ExitIntent no i'm good
-
-ResetPlayersIntent resync
-ResetPlayersIntent reset
-ResetPlayersIntent reboot
-ResetPlayersIntent sync
-ResetPlayersIntent sync with the fire service
-ResetPlayersIntent resync with the fire service
