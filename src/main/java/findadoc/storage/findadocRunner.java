@@ -9,6 +9,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.amazon.speech.speechlet.Session;
+import com.amazon.speech.speechlet.SpeechletResponse;
+import com.amazon.speech.ui.PlainTextOutputSpeech;
+import com.amazon.speech.ui.Reprompt;
+import com.amazon.speech.ui.SimpleCard;
+
+import findadoc.SymptomType;
 
 /**
  * Represents a findadoc instance.
@@ -53,6 +59,205 @@ public final class findadocRunner {
 
     protected void setRunnerData(findadocRunnerData runnerData) {
         this.runnerData = runnerData;
+    }
+    
+
+    public SpeechletResponse GetSpeechletResponse(SymptomType type, String time)
+    {
+    	SimpleCard card;
+    	String docName;
+    	switch (type)
+    	{
+    		case Pain:
+    			docName = GetDocNameForPain();
+    			break;
+    		case Arthritis:
+    			docName = GetDocNameForArthritis();
+    			break;
+    		case Sneeze:
+    			docName = GetDocNameForSneeze();
+    			break;
+    		case Emotion:
+    			docName = GetDocNameForEmotion();
+    			break;
+    		case JointPain:
+    			docName = GetDocNameForJointPain();
+    			break;
+    		case Sleep:
+    			docName = GetDocNameForSleep();
+    			card = GetCard(type);
+    			break;
+    		case Tooth:
+    			docName = GetDocNameForTooth();
+    			break;
+    		case Vision:
+    			docName = GetDocNameForVision();
+    			break;
+    		default:	
+    			docName = GetDocNameForGeneral();
+    			break;
+    	}
+    	
+    	
+    }
+    
+    private SimpleCard GetCard(SymptomType type)
+    {
+        // Create the Simple card content.
+        SimpleCard card = new SimpleCard();
+        
+        docName = GetDocNameFromType(type);
+        card.setTitle(docName);
+        card.setContent(speechText);
+
+        // Create the plain text output.
+        PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
+        speech.setText(speechText);
+
+        // Create reprompt
+        PlainTextOutputSpeech repromptSpeech = new PlainTextOutputSpeech();
+        repromptSpeech.setText(repromptText);
+        Reprompt reprompt = new Reprompt();
+        reprompt.setOutputSpeech(repromptSpeech);
+
+        return SpeechletResponse.newAskResponse(speech, reprompt, card);
+    }
+    
+    private String GetDocNameForPain()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Pain"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForSneeze()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Sneeze"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForSleep()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Sleep"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForEmotion()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Emotion"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForTooth()
+    {    	
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Tooth"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForVision()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Vision"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForArthritis()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Arthritis"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+    private String GetDocNameForJointPain()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("Joint Pain"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
+    }
+    
+
+    
+    private String GetDocNameForGeneral()
+    {
+    	List<String> list = runnerData.getNames();
+    	Map<String,String> map = runnerData.getSpecialty();
+    	
+    	for (String s : list)
+    	{
+    		String specialty = map.get(s);
+    		if (specialty.equals("General"))
+    			return s;
+    	}
+    	
+    	return "Unknown";
     }
 
     /**

@@ -4,18 +4,6 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Calendar;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.xml.sax.InputSource;
-import java.io.BufferedReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * Contains player and score data to represent a score keeper game.
@@ -29,6 +17,8 @@ public class findadocRunnerData {
     private Map<String, String> phone;
     // maximum applicable duration of symptom in Amazon.Duration format. "None" if n/a
     private Map<String, String> maxDuration;
+    // doctor's specialties
+    private Map<String, String> specialty;
     // relevant areas of symptoms.
     private Map<String, ArrayList<String>> areas;
 
@@ -48,31 +38,35 @@ public class findadocRunnerData {
         TreeMap<String, String> affiliation = new TreeMap<String, String>(); // may need String.CASE_INSENSITIVE_ORDER in ()?
         TreeMap<String, String> phone = new TreeMap<String, String>();
         TreeMap<String, String> maxDuration = new TreeMap<String, String>();
+        TreeMap<String, String> specialty = new TreeMap<String, String>();
         TreeMap<String, ArrayList<String>> areas = new TreeMap<String, ArrayList<String>>();
         
-        populateDoctors(names, affiliation, phone, maxDuration, areas);
+        populateDoctors(names, affiliation, phone, maxDuration, specialty, areas);
         
         newInstance.setNames(names);
         newInstance.setAffiliation(affiliation);
         newInstance.setPhone(phone);
         newInstance.setMaxDuration(maxDuration);
+        newInstance.setSpecialty(specialty);
         newInstance.setAreas(areas);
         return newInstance;
     }
 
     public void repopulateDoctors() {
         ArrayList<String> names = new ArrayList<String>();
-        TreeMap<String, String> affiliation = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, String> phone = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, String> maxDuration = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, ArrayList<String>> areas = new TreeMap<String, ArrayList<String>>(String.CASE_INSENSITIVE_ORDER);
-        
-        populateDoctors(names, affiliation, phone, maxDuration, areas);
+        TreeMap<String, String> affiliation = new TreeMap<String, String>();
+        TreeMap<String, String> phone = new TreeMap<String, String>();
+        TreeMap<String, String> maxDuration = new TreeMap<String, String>();
+        TreeMap<String, String> specialty = new TreeMap<String, String>();
+        TreeMap<String, ArrayList<String>> areas = new TreeMap<String, ArrayList<String>>();
+
+        populateDoctors(names, affiliation, phone, maxDuration, specialty, areas);
         
         this.setNames(names);
         this.setAffiliation(affiliation);
         this.setPhone(phone);
         this.setMaxDuration(maxDuration);
+        this.setSpecialty(specialty);
         this.setAreas(areas);
     }
 
@@ -109,6 +103,14 @@ public class findadocRunnerData {
         this.maxDuration = maxDuration;
     }
 
+    public Map<String, String> getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Map<String, String> specialty) {
+        this.specialty = specialty;
+    }
+
     public Map<String, ArrayList<String>> getAreas() {
         return areas;
     }
@@ -118,7 +120,7 @@ public class findadocRunnerData {
     }
     
     public static void populateDoctors(ArrayList<String> names, TreeMap<String, String> affiliation, TreeMap<String, String> phone, 
-    		TreeMap<String, String> maxDuration, TreeMap<String, ArrayList<String>> areas)
+    		TreeMap<String, String> maxDuration, TreeMap<String, String> specialty, TreeMap<String, ArrayList<String>> areas)
     {
     	// Instantiate repeated variables
     	String docName = "Unknown";

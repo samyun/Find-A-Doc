@@ -30,18 +30,18 @@ public class findadocDao {
             return null;
         }
 
-        return findadocRunner.newInstance(session, item.getGameData());
+        return findadocRunner.newInstance(session, item.getRunnerData());
     }
 
     /**
      * Saves the {@link findadocRunner} into the database.
      * 
-     * @param game
+     * @param runner
      */
-    public void savefindadocRunner(findadocRunner game) {
+    public void savefindadocRunner(findadocRunner runner) {
         findadocUserDataItem item = new findadocUserDataItem();
-        item.setCustomerId(game.getSession().getUser().getUserId());
-        item.setGameData(game.getGameData());
+        item.setCustomerId(runner.getSession().getUser().getUserId());
+        item.setRunnerData(runner.getRunnerData());
 
         dynamoDbClient.saveItem(item);
     }

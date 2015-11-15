@@ -130,7 +130,7 @@ public class findadocManager {
             return getAskSpeechletResponse(speechText, responseText);
         }
 		
-		return runner.makeUpAFunction(sleepTime, SymptomType.Sleep);
+		return runner.GetSpeechletResponse(SymptomType.Sleep, sleepTime);
 		
 	}
 
@@ -138,7 +138,7 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 
-		return runner.makeUpAFunction("none", SymptomType.Emotion);
+		return runner.makeUpAFunction(SymptomType.Emotion);
 		
 	}
 
@@ -147,7 +147,7 @@ public class findadocManager {
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 		
 		
-		return runner.makeUpAFunction("none", SymptomType.Tooth);
+		return runner.makeUpAFunction(SymptomType.Tooth);
 		
 	}
 
@@ -155,7 +155,7 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 
-		return runner.makeUpAFunction("none", SymptomType.Vision);
+		return runner.makeUpAFunction(SymptomType.Vision);
 		
 	}
     

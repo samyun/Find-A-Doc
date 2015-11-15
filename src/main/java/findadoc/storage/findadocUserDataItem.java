@@ -19,7 +19,7 @@ public class findadocUserDataItem {
 
     private String customerId;
 
-    private findadocRunnerData gameData;
+    private findadocRunnerData runnerData;
 
     @DynamoDBHashKey(attributeName = "CustomerId")
     public String getCustomerId() {
@@ -31,28 +31,28 @@ public class findadocUserDataItem {
     }
 
     @DynamoDBAttribute(attributeName = "Data")
-    @DynamoDBMarshalling(marshallerClass = findadocGameDataMarshaller.class)
-    public findadocRunnerData getGameData() {
-        return gameData;
+    @DynamoDBMarshalling(marshallerClass = findadocRunnerDataMarshaller.class)
+    public findadocRunnerData getRunnerData() {
+        return runnerData;
     }
 
-    public void setGameData(findadocRunnerData gameData) {
-        this.gameData = gameData;
+    public void setRunnerData(findadocRunnerData runnerData) {
+        this.runnerData = runnerData;
     }
 
     /**
      * A {@link DynamoDBMarshaller} that provides marshalling and unmarshalling logic for
      * {@link findadocRunnerData} values so that they can be persisted in the database as String.
      */
-    public static class findadocGameDataMarshaller implements
+    public static class findadocRunnerDataMarshaller implements
             DynamoDBMarshaller<findadocRunnerData> {
 
         @Override
-        public String marshall(findadocRunnerData gameData) {
+        public String marshall(findadocRunnerData runnerData) {
             try {
-                return OBJECT_MAPPER.writeValueAsString(gameData);
+                return OBJECT_MAPPER.writeValueAsString(runnerData);
             } catch (JsonProcessingException e) {
-                throw new IllegalStateException("Unable to marshall game data", e);
+                throw new IllegalStateException("Unable to marshall runner data", e);
             }
         }
 
@@ -62,7 +62,7 @@ public class findadocUserDataItem {
                 return OBJECT_MAPPER.readValue(value, new TypeReference<findadocRunnerData>() {
                 });
             } catch (Exception e) {
-                throw new IllegalStateException("Unable to unmarshall game data value", e);
+                throw new IllegalStateException("Unable to unmarshall runner data value", e);
             }
         }
     }
