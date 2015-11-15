@@ -63,26 +63,18 @@ public class findadocSpeechlet implements Speechlet {
         } else if ("CoughIntent".equals(intent.getName())) {
             return findadocManager.getCoughIntentResponse(intent, session, skillContext);
 		
-		else if ("SleepIntent".equals(intent.getName())) {
+		} else if ("SleepIntent".equals(intent.getName())) {
             return findadocManager.getSleepIntentResponse(intent, session, skillContext);
 
-        }
-		
-		else if ("EmotionIntent".equals(intent.getName())) {
+        } else if ("EmotionIntent".equals(intent.getName())) {
             return findadocManager.getEmotionIntentResponse(intent, session, skillContext);
 
-        }
-		
-		else if ("ToothIntent".equals(intent.getName())) {
+        } else if ("ToothIntent".equals(intent.getName())) {
             return findadocManager.getToothIntentResponse(intent, session, skillContext);
-
-        }
-		
-		else if ("VisionIntent".equals(intent.getName())) {
+			
+        } else if ("VisionIntent".equals(intent.getName())) {
             return findadocManager.getVisionIntentResponse(intent, session, skillContext);
 
-        }
-		
         } else if ("HelpIntent".equals(intent.getName())) {
             return findadocManager.getHelpIntentResponse(intent, session, skillContext);
 
