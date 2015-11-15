@@ -15,7 +15,7 @@ import com.amazon.speech.speechlet.Session;
  */
 public final class findadocRunner {
     private Session session;
-    private findadocRunnerData gameData;
+    private findadocRunnerData runnerData;
 
     private findadocRunner() {
     }
@@ -28,15 +28,15 @@ public final class findadocRunner {
      * {@link findadocRunnerData#newInstance()}
      * 
      * @param session
-     * @param gameData
+     * @param runnerData
      * @return
      * @see findadocRunnerData#newInstance()
      */
-    public static findadocRunner newInstance(Session session, findadocRunnerData gameData) {
-        findadocRunner game = new findadocRunner();
-        game.setSession(session);
-        game.setGameData(gameData);
-        return game;
+    public static findadocRunner newInstance(Session session, findadocRunnerData runnerData) {
+        findadocRunner runner = new findadocRunner();
+        runner.setSession(session);
+        runner.setRunnerData(runnerData);
+        return runner;
     }
 
     protected void setSession(Session session) {
@@ -47,21 +47,21 @@ public final class findadocRunner {
         return session;
     }
 
-    protected findadocRunnerData getGameData() {
-        return gameData;
+    protected findadocRunnerData getRunnerData() {
+        return runnerData;
     }
 
-    protected void setGameData(findadocRunnerData gameData) {
-        this.gameData = gameData;
+    protected void setRunnerData(findadocRunnerData runnerData) {
+        this.runnerData = runnerData;
     }
 
     /**
-     * Returns the list containing the names of medications
+     * Returns the list containing the names of doctors
      * 
      * @return 
      */
     public List<String> getNames() {
-        return gameData.getNames();
+        return runnerData.getNames();
     }
 
     /**
@@ -70,7 +70,7 @@ public final class findadocRunner {
      * @return true if the doctor has drug entries, false otherwise
      */
     public boolean hasDrugEntries() {
-        return !gameData.getNames().isEmpty();
+        return !runnerData.getNames().isEmpty();
     }
 
     /**
@@ -79,7 +79,7 @@ public final class findadocRunner {
      * @return the number of drugs in the system.
      */
     public int getNumberOfDrugsInSystem() {
-        return gameData.getNames().size();
+        return runnerData.getNames().size();
     }
 
     /**
@@ -89,7 +89,7 @@ public final class findadocRunner {
      *            Name of the drug
      */
     public void addDrugToSystem(String drugName) {
-        gameData.getNames().add(drugName);
+        runnerData.getNames().add(drugName);
     }
 
     /**
@@ -100,7 +100,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasDrug(String drugName) {
-        List<String> list = gameData.getNames();
+        List<String> list = runnerData.getNames();
 		for (String s : list)
 		{
 			if (s.equalsIgnoreCase(drugName))
@@ -115,7 +115,7 @@ public final class findadocRunner {
      * @return true if the doctor has dose left in period entries, false otherwise
      */
     public boolean hasNumDosesEntries() {
-        return !gameData.getNumDoses().isEmpty();
+        return !runnerData.getNumDoses().isEmpty();
     }
 
     /**
@@ -126,7 +126,7 @@ public final class findadocRunner {
      * @return number of doses left in the perscription period
      */
     public long getDosesLeftInPeriodForDrug(String drugName) {
-		Map<String, Long> map = gameData.getNumDoses();
+		Map<String, Long> map = runnerData.getNumDoses();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -143,7 +143,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasNumDosesForDrug(String drugName) {
-		Map<String, Long> map = gameData.getNumDoses();
+		Map<String, Long> map = runnerData.getNumDoses();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -167,8 +167,8 @@ public final class findadocRunner {
         long currentDose = 0L;
         if (hasDrug(drugName) && hasNumDosesForDrug(drugName)) {
         	currentDose = getDosesLeftInPeriodForDrug(drugName);
-			gameData.getNumDoses().remove(drugName.toLowerCase());
-			gameData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(currentDose + dose));
+			runnerData.getNumDoses().remove(drugName.toLowerCase());
+			runnerData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(currentDose + dose));
 			return true;
         }
         else{
@@ -191,8 +191,8 @@ public final class findadocRunner {
         long currentDose = 0L;
         if (hasDrug(drugName) && hasNumDosesForDrug(drugName)) {
         	currentDose = getDosesLeftInPeriodForDrug(drugName);
-			gameData.getNumDoses().remove(drugName.toLowerCase());
-            gameData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(currentDose - dose));
+			runnerData.getNumDoses().remove(drugName.toLowerCase());
+            runnerData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(currentDose - dose));
             return true;
         }
         else{
@@ -202,8 +202,8 @@ public final class findadocRunner {
     
     public boolean resetDosesLeftInPeriodForDrug(String drugName) {
     	if (hasDrug(drugName) && hasNumDosesForDrug(drugName)) {
-			gameData.getNumDoses().remove(drugName.toLowerCase());
-            gameData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(getSupplyForDrug(drugName)));
+			runnerData.getNumDoses().remove(drugName.toLowerCase());
+            runnerData.getNumDoses().put(drugName.toLowerCase(), Long.valueOf(getSupplyForDrug(drugName)));
             return true;
         }
         else{
@@ -217,7 +217,7 @@ public final class findadocRunner {
      * @return true if the doctor has last dates taken entries, false otherwise
      */
     public boolean hasLastDatesEntries() {
-        return !gameData.getLastDates().isEmpty();
+        return !runnerData.getLastDates().isEmpty();
     }
 
     /**
@@ -239,7 +239,7 @@ public final class findadocRunner {
      * @return last date drug was taken
      */
     public Calendar getLastDatesForDrug(String drugName) {		
-		Map<String, Calendar> map = gameData.getLastDates();
+		Map<String, Calendar> map = runnerData.getLastDates();
 		for (Map.Entry<String, Calendar> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -258,8 +258,8 @@ public final class findadocRunner {
      */
     public boolean setLastDateToToday(String drugName) {
     	if (hasDrug(drugName)) {
-			gameData.getLastDates().remove(drugName.toLowerCase());
-            gameData.getLastDates().put(drugName.toLowerCase(), Calendar.getInstance());
+			runnerData.getLastDates().remove(drugName.toLowerCase());
+            runnerData.getLastDates().put(drugName.toLowerCase(), Calendar.getInstance());
             return true;
         }
         else{
@@ -302,7 +302,7 @@ public final class findadocRunner {
     public void resyncIfNewDay()
     {
     	boolean newDay = false;
-    	List<String> names = gameData.getNames();
+    	List<String> names = runnerData.getNames();
     	if (names.size() < 1)
 		{
     		newDay = true;
@@ -331,7 +331,7 @@ public final class findadocRunner {
 	 */
 	public void resyncFHIR()
 	{
-		gameData.resyncFHIR();
+		runnerData.repopulateDoctors();
 	}
 
     /**
@@ -340,7 +340,7 @@ public final class findadocRunner {
      * @return true if the doctor has day total entries, false otherwise
      */
     public boolean hasDayTotalEntries() {
-        return !gameData.getDayTotals().isEmpty();
+        return !runnerData.getDayTotals().isEmpty();
     }
 
     /**
@@ -351,7 +351,7 @@ public final class findadocRunner {
      * @return number of doses left in the perscription period
      */
     public long getDosesTakenTodayForDrug(String drugName) {
-		Map<String, Long> map = gameData.getDayTotals();
+		Map<String, Long> map = runnerData.getDayTotals();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -368,7 +368,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasDayTotalsForDrug(String drugName) {
-		Map<String, Long> map = gameData.getDayTotals();
+		Map<String, Long> map = runnerData.getDayTotals();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -392,8 +392,8 @@ public final class findadocRunner {
         long currentDose = 0L;
         if (hasDrug(drugName) && hasDayTotalsForDrug(drugName)) {
         	currentDose = getDosesTakenTodayForDrug(drugName);
-			gameData.getDayTotals().remove(drugName.toLowerCase());
-            gameData.getDayTotals().put(drugName.toLowerCase(), Long.valueOf(currentDose + dose));
+			runnerData.getDayTotals().remove(drugName.toLowerCase());
+            runnerData.getDayTotals().put(drugName.toLowerCase(), Long.valueOf(currentDose + dose));
             return true;
         }
         else{
@@ -413,8 +413,8 @@ public final class findadocRunner {
 
         long currentDose = 0L;
         if (hasDrug(drugName) && hasDayTotalsForDrug(drugName)) {
-			gameData.getDayTotals().remove(drugName.toLowerCase());
-        	gameData.getDayTotals().put(drugName.toLowerCase(), null);
+			runnerData.getDayTotals().remove(drugName.toLowerCase());
+        	runnerData.getDayTotals().put(drugName.toLowerCase(), null);
         	return true;
         }
         else{
@@ -437,8 +437,8 @@ public final class findadocRunner {
         long currentDose = 0L;
         if (hasDrug(drugName) && hasDayTotalsForDrug(drugName)) {
         	currentDose = getDosesTakenTodayForDrug(drugName);
-			gameData.getDayTotals().remove(drugName.toLowerCase());
-            gameData.getDayTotals().put(drugName.toLowerCase(), Long.valueOf(currentDose - dose));
+			runnerData.getDayTotals().remove(drugName.toLowerCase());
+            runnerData.getDayTotals().put(drugName.toLowerCase(), Long.valueOf(currentDose - dose));
             return true;
         }
         else{
@@ -452,7 +452,7 @@ public final class findadocRunner {
      * @return true if the doctor has frequency entries, false otherwise
      */
     public boolean hasFrequencyEntries() {
-        return !gameData.getFrequency().isEmpty();
+        return !runnerData.getFrequency().isEmpty();
     }
 
     /**
@@ -463,7 +463,7 @@ public final class findadocRunner {
      * @return frequency to take the drug
      */
     public long getFrequencyForDrug(String drugName) {
-		Map<String, Long> map = gameData.getFrequency();
+		Map<String, Long> map = runnerData.getFrequency();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -480,7 +480,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasFrequencyForDrug(String drugName) {
-		Map<String, Long> map = gameData.getFrequency();
+		Map<String, Long> map = runnerData.getFrequency();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -502,8 +502,8 @@ public final class findadocRunner {
     public boolean changeFrequencyOfDrug(String drugName, long frequency) {
 
         if (hasDrug(drugName) && hasFrequencyForDrug(drugName)) {
-			gameData.getFrequency().remove(drugName.toLowerCase());
-        	gameData.getFrequency().put(drugName.toLowerCase(), Long.valueOf(frequency));
+			runnerData.getFrequency().remove(drugName.toLowerCase());
+        	runnerData.getFrequency().put(drugName.toLowerCase(), Long.valueOf(frequency));
         	return true;
         }
         else{
@@ -517,7 +517,7 @@ public final class findadocRunner {
      * @return true if the doctor has amount of supply entries, false otherwise
      */
     public boolean hasSupplyEntries() {
-        return !gameData.getSupply().isEmpty();
+        return !runnerData.getSupply().isEmpty();
     }
 
     /**
@@ -528,7 +528,7 @@ public final class findadocRunner {
      * @return amount supplied for a drug
      */
     public long getSupplyForDrug(String drugName) {
-		Map<String, Long> map = gameData.getSupply();
+		Map<String, Long> map = runnerData.getSupply();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -545,7 +545,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasSupplyForDrug(String drugName) {
-		Map<String, Long> map = gameData.getSupply();
+		Map<String, Long> map = runnerData.getSupply();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -567,8 +567,8 @@ public final class findadocRunner {
     public boolean changeSupplyOfDrug(String drugName, long supply) {
 
         if (hasDrug(drugName) && hasSupplyForDrug(drugName)) {
-			gameData.getSupply().remove(drugName.toLowerCase());
-        	gameData.getSupply().put(drugName.toLowerCase(), Long.valueOf(supply));
+			runnerData.getSupply().remove(drugName.toLowerCase());
+        	runnerData.getSupply().put(drugName.toLowerCase(), Long.valueOf(supply));
         	return true;
         }
         else{
@@ -582,7 +582,7 @@ public final class findadocRunner {
      * @return true if the doctor has amount of refill entries, false otherwise
      */
     public boolean hasNumRefillsEntries() {
-        return !gameData.getNumRefills().isEmpty();
+        return !runnerData.getNumRefills().isEmpty();
     }
 
     /**
@@ -593,7 +593,7 @@ public final class findadocRunner {
      * @return number of refills for a drug
      */
     public long getNumRefillsForDrug(String drugName) {
-		Map<String, Long> map = gameData.getNumRefills();
+		Map<String, Long> map = runnerData.getNumRefills();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -610,7 +610,7 @@ public final class findadocRunner {
      * @return true if the drug exists in the doctor, false otherwise
      */
     public boolean hasNumRefillsForDrug(String drugName) {
-		Map<String, Long> map = gameData.getNumRefills();
+		Map<String, Long> map = runnerData.getNumRefills();
 		for (Map.Entry<String, Long> pair : map.entrySet())
 		{
 			if (pair.getKey().equalsIgnoreCase(drugName))
@@ -632,8 +632,8 @@ public final class findadocRunner {
     public boolean changeNumRefillsOfDrug(String drugName, long refill) {
 
         if (hasDrug(drugName) && hasNumRefillsForDrug(drugName)) {
-			gameData.getNumRefills().remove(drugName.toLowerCase());
-        	gameData.getNumRefills().put(drugName.toLowerCase(), Long.valueOf(refill));
+			runnerData.getNumRefills().remove(drugName.toLowerCase());
+        	runnerData.getNumRefills().put(drugName.toLowerCase(), Long.valueOf(refill));
         	return true;
         }
         else{
@@ -655,8 +655,8 @@ public final class findadocRunner {
 
         if (hasDrug(drugName) && hasNumRefillsForDrug(drugName)) {
         	long currentRefills = getNumRefillsForDrug(drugName);
-			gameData.getNumRefills().remove(drugName.toLowerCase());
-        	gameData.getNumRefills().put(drugName.toLowerCase(), Long.valueOf(currentRefills - refill));
+			runnerData.getNumRefills().remove(drugName.toLowerCase());
+        	runnerData.getNumRefills().put(drugName.toLowerCase(), Long.valueOf(currentRefills - refill));
         	return true;
         }
         else{

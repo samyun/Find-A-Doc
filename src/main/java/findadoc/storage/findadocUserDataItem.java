@@ -21,7 +21,7 @@ public class findadocUserDataItem {
 
     private findadocRunnerData gameData;
 
-    @DynamoDBHashKey(attributeName = "DoctorID")
+    @DynamoDBHashKey(attributeName = "CustomerId")
     public String getCustomerId() {
         return customerId;
     }

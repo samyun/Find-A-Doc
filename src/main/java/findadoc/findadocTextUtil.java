@@ -1,5 +1,6 @@
 package findadoc;
 
+import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public final class findadocTextUtil {
     /**
      * List of drug names blacklisted for this app.
      */
-    private static final List<String> NAME_WhiteLIST = Arrays.asList("leg", "legs", 
+    private static final List<String> NAME_WHITELIST = Arrays.asList("leg", "legs", 
     												"arm", "arms", "feet", "foot", "knee",
     												"knees", "back", "head", "shoulder", "shoulders",
     												"hands", "hand");
@@ -26,42 +27,114 @@ public final class findadocTextUtil {
     public static final String COMPLETE_HELP =
 
 
-            "Here's some things you can say. My neck has hurt for 1 day, "
-                    + "and exit.";
+            "Here's some things you can say. My leg hurts, my neck has hurt for 1 day, "
+                    + "I've been coughing the past week, and exit.";
 
     /**
      * Text of next help.
      */
-    public static final String NEXT_HELP = "You can check if you took your medication, "
-            + "tell me that you took medicine, or say help. What would you like?";
+    public static final String NEXT_HELP = "You can tell me your symptoms, "
+            + "say help, or exit. What would you like?";
 
     /**
-     * Cleans up the drug name, and sanitizes it against the blacklist.
+     * Cleans up the pain area name and sanitizes it.
      *
 
-     * @param recognizedDrugName
+     * @param recognizedAreaName
      * @return
      */
-    public static String getDrugName(String recognizedDrugName) {
+    public static String getPainAreaName(String recognizedAreaName) {
 
-        if (recognizedDrugName == null || recognizedDrugName.isEmpty()) {
+        if (recognizedAreaName == null || recognizedAreaName.isEmpty()) {
             return null;
         }
 
         String cleanedName;
-        if (recognizedDrugName.contains(" ")) {
+        if (recognizedAreaName.contains(" ")) {
             // the name should only contain a first name, so ignore the second part if any
-            cleanedName = recognizedDrugName.substring(recognizedDrugName.indexOf(" "));
+            cleanedName = recognizedAreaName.substring(recognizedAreaName.indexOf(" "));
         } else {
 
-            cleanedName = recognizedDrugName;
+            cleanedName = recognizedAreaName;
         }
 
-        // if the name is on our blacklist, it must be mis-recognition
-        if (Name_WHITELIST.contains(cleanedName)) {
+        // if the name is on our whitelist, it must be correct
+        if (NAME_WHITELIST.contains(cleanedName)) {
            return cleanedName; 
         }
 
         return null;
+    }
+    
+    /**
+     * Cleans up the pain area name and sanitizes it.
+     *
+
+     * @param recognizedDurationText
+     * @return
+     */
+    public static String getDurationText(String recognizedDurationText) {
+
+        if (recognizedDurationText == null || recognizedDurationText.isEmpty()) {
+            return null;
+        }
+
+        boolean isTime = false;
+        boolean isDay = false;
+        
+        // if first character isn't a P, it's not a valid time
+        if (recognizedDurationText.charAt(0) != 'P')
+        	return null;
+        
+        // if second character is a T, it's a time, if it's a number it's a day
+        if (recognizedDurationText.charAt(1) == 'T')
+        {
+        	isTime = true;
+        	isDay = false;
+        }else if (Character.isDigit(recognizedDurationText.charAt(1)))
+        {
+        	isDay = true;
+        	isTime = false;
+        }
+        
+        // if all but last char is a number, it's valid thus far
+        if (isTime)
+        {
+        	int l = recognizedDurationText.length();
+        	for (int i = 2; i < l-1;i++)
+        	{
+        		if (!Character.isDigit(recognizedDurationText.charAt(i)))
+        		{
+        			return null;
+        		}
+        	}
+        }
+        else if (isDay)
+        {
+        	int l = recognizedDurationText.length();
+        	for (int i = 2; i < l-1;i++)
+        	{
+        		if (!Character.isDigit(recognizedDurationText.charAt(i)))
+        		{
+        			return null;
+        		}
+        	}
+        }
+        
+        //if last char is not SMHDWY, it's invalid.
+        if (isTime)
+        {
+        	char c = recognizedDurationText.charAt(recognizedDurationText.length());
+        	if (c != 'S' && c != 'M' && c != 'H')
+        		return null;
+        }
+        else if (isDay)
+        {
+        	char c = recognizedDurationText.charAt(recognizedDurationText.length());
+        	if (c != 'D' && c != 'W' && c != 'M' && c != 'Y')
+        		return null;
+        }
+        
+    	return recognizedDurationText;
     }
 }

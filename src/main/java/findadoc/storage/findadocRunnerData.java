@@ -21,20 +21,16 @@ import java.net.URL;
  * Contains player and score data to represent a score keeper game.
  */
 public class findadocRunnerData {
-	// names of the drugs
+	// names of the doctors
     private List<String> names;
-    // number of doses left in the perscription period
-    private Map<String, Long> numDoses;
-    // last date taken
-    private Map<String, Calendar> lastDates;
-    // total number of doses taken for the day
-    private Map<String, Long> dayTotals;
-    // frequency to take doses
-    private Map<String, Long> frequency;
-    // total number of doses in a perscription period supply
-    private Map<String, Long> supply;
-    // number of refills allowed
-    private Map<String, Long> numRefills;
+    // doctor hospital affilation 
+    private Map<String, String> affiliation;
+    // doctor phone number
+    private Map<String, String> phone;
+    // maximum applicable duration of symptom in Amazon.Duration format. "None" if n/a
+    private Map<String, String> maxDuration;
+    // relevant areas of symptoms.
+    private Map<String, ArrayList<String>> areas;
 
     public findadocRunnerData() {
         // public no-arg constructor required for DynamoDBMapper marshalling
@@ -49,46 +45,35 @@ public class findadocRunnerData {
         findadocRunnerData newInstance = new findadocRunnerData();
         
         ArrayList<String> names = new ArrayList<String>();
-
-        TreeMap<String, Long> frequency = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> supply = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> numRefills = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> numDoses = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Calendar> lastDates = new TreeMap<String, Calendar>();
-        TreeMap<String, Long> dayTotals = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, String> affiliation = new TreeMap<String, String>(); // may need String.CASE_INSENSITIVE_ORDER in ()?
+        TreeMap<String, String> phone = new TreeMap<String, String>();
+        TreeMap<String, String> maxDuration = new TreeMap<String, String>();
+        TreeMap<String, ArrayList<String>> areas = new TreeMap<String, ArrayList<String>>();
         
-        fhirQuery(names, frequency, supply, numRefills, numDoses, lastDates, dayTotals);
+        populateDoctors(names, affiliation, phone, maxDuration, areas);
         
         newInstance.setNames(names);
-        newInstance.setFrequency(frequency);
-        newInstance.setSupply(supply);
-        newInstance.setNumRefills(numRefills);
-        
-        newInstance.setNumDoses(numDoses);
-        newInstance.setLastDates(lastDates);
-        newInstance.setDayTotals(dayTotals);
+        newInstance.setAffiliation(affiliation);
+        newInstance.setPhone(phone);
+        newInstance.setMaxDuration(maxDuration);
+        newInstance.setAreas(areas);
         return newInstance;
     }
 
-    public void resyncFHIR() {
+    public void repopulateDoctors() {
         ArrayList<String> names = new ArrayList<String>();
-        TreeMap<String, Long> frequency = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> supply = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> numRefills = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> numDoses = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Calendar> lastDates = new TreeMap<String, Calendar>(String.CASE_INSENSITIVE_ORDER);
-        TreeMap<String, Long> dayTotals = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, String> affiliation = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, String> phone = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, String> maxDuration = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, ArrayList<String>> areas = new TreeMap<String, ArrayList<String>>(String.CASE_INSENSITIVE_ORDER);
         
-        fhirQuery(names, frequency, supply, numRefills, numDoses, lastDates, dayTotals);
+        populateDoctors(names, affiliation, phone, maxDuration, areas);
         
         this.setNames(names);
-        this.setFrequency(frequency);
-        this.setSupply(supply);
-        this.setNumRefills(numRefills);
-        
-        this.setNumDoses(numDoses);
-        this.setLastDates(lastDates);
-        this.setDayTotals(dayTotals);
+        this.setAffiliation(affiliation);
+        this.setPhone(phone);
+        this.setMaxDuration(maxDuration);
+        this.setAreas(areas);
     }
 
     public List<String> getNames() {
@@ -99,141 +84,59 @@ public class findadocRunnerData {
         this.names = names;
     }
 
-    public Map<String, Long> getNumDoses() {
-        return numDoses;
+    public Map<String, String> getAffiliation() {
+        return affiliation;
     }
 
-    public void setNumDoses(Map<String, Long> numDoses) {
-        this.numDoses = numDoses;
+    public void setAffiliation(Map<String, String> affiliation) {
+
+        this.affiliation = affiliation;
     }
 
-    public Map<String, Calendar> getLastDates() {
-        return lastDates;
+    public Map<String, String> getPhone() {
+        return phone;
     }
 
-    public void setLastDates(Map<String, Calendar> lastDates) {
-
-        this.lastDates = lastDates;
+    public void setPhone(Map<String, String> phone) {
+        this.phone = phone;
     }
 
-    public Map<String, Long> getDayTotals() {
-        return dayTotals;
+    public Map<String, String> getMaxDuration() {
+        return maxDuration;
     }
 
-    public void setDayTotals(Map<String, Long> dayTotals) {
-        this.dayTotals = dayTotals;
+    public void setMaxDuration(Map<String, String> maxDuration) {
+        this.maxDuration = maxDuration;
     }
 
-    public Map<String, Long> getFrequency() {
-        return frequency;
+    public Map<String, ArrayList<String>> getAreas() {
+        return areas;
     }
 
-    public void setFrequency(Map<String, Long> frequency) {
-        this.frequency = frequency;
-    }
-
-    public Map<String, Long> getSupply() {
-        return supply;
-    }
-
-    public void setSupply(Map<String, Long> supply) {
-        this.supply = supply;
-    }
-
-    public Map<String, Long> getNumRefills() {
-        return numRefills;
-    }
-
-    public void setNumRefills(Map<String, Long> numRefills) {
-    	this.numRefills = numRefills;
+    public void setAreas(Map<String, ArrayList<String>> areas) {
+        this.areas = areas;
     }
     
-    public static void fhirQuery(ArrayList<String> names, TreeMap<String, Long> frequency, TreeMap<String, Long> supply, 
-    		TreeMap<String, Long> numRefills, TreeMap<String, Long> numDoses, TreeMap<String, Calendar> lastDates, 
-    		TreeMap<String, Long> dayTotals)
+    public static void populateDoctors(ArrayList<String> names, TreeMap<String, String> affiliation, TreeMap<String, String> phone, 
+    		TreeMap<String, String> maxDuration, TreeMap<String, ArrayList<String>> areas)
     {
-		/*)
-		String drugName = "lipitor";
-		names.add(drugName);
-		frequency.put(drugName, 1L);
-		supply.put(drugName, 30L);
-		numRefills.put(drugName, 12L);
-		numDoses.put(drugName, 30L);
-		lastDates.put(drugName, null);
-		dayTotals.put(drugName, 0L);
+    	// Instantiate repeated variables
+    	String docName = "Unknown";
+    	ArrayList<String> affectedAreas = new ArrayList<>();
+    	String[] areaList = {"None"};
 		
-	}*/
-	String[] nameTrolls = {"allegra", "cocaine", "advil", "zocor"};
-	
-	for (int i = 0; i<4;i++)
-	{
-		String drugName = nameTrolls[i];
-		names.add(drugName);
-		frequency.put(drugName, 1L);
-		supply.put(drugName, 30L);
-		numRefills.put(drugName, 2L);
-		numDoses.put(drugName, 30L);
-		lastDates.put(drugName, null);
-		dayTotals.put(drugName, 0L);
-	}
-    	/*
-		String drugName;
-    	String[] splitName = {};
-
-    	//grab the xml and start parsing        
-    	DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-    	DocumentBuilder db = null;
-    	String url = "https://open-ic.epic.com/FHIR/api/FHIR/DSTU2/MedicationPrescription?patient=TSvxrNacr7Cv7KQXd2Y8lFXnKQyRbVPmWyfDobtXFBOsB&status=active";
-    	String output;
-    	try {
-    		output = httpGet(url);
-    		db = dbf.newDocumentBuilder();
-    		InputSource is = new InputSource(new StringReader(output));
-    		Document doc = db.parse(is);
-    		NodeList med = doc.getElementsByTagName("medication");
-    		NodeList dose = doc.getElementsByTagName("dosageInstruction");
-    		NodeList dispense = doc.getElementsByTagName("dispense");
-
-    		for (int i = 0; i < med.getLength(); i++) {
-    			splitName =  med.item(i).getFirstChild().getAttributes().item(0).getTextContent().split("\\p{Punct}");
-    			//drugName = splitName[1].replaceAll("[()]", "").toLowerCase();
-				drugName = nameTrolls[i];
-				names.add(drugName);
-    			frequency.put(drugName, Long.parseLong(dose.item(i).getChildNodes().item(4).getFirstChild().getFirstChild().getAttributes().item(0).getTextContent(),10));
-    			supply.put(drugName, Long.parseLong(dispense.item(i).getChildNodes().item(2).getFirstChild().getAttributes().item(0).getTextContent(),10));
-    			numRefills.put(drugName, Long.parseLong(dispense.item(i).getFirstChild().getAttributes().item(0).getTextContent(),10));
-    			numDoses.put(drugName, supply.get(drugName));
-    			lastDates.put(drugName, null);
-    			dayTotals.put(drugName, 0L);
-				
-				
-    		}
-
-    	} catch (Exception e) {
-    		e.printStackTrace();;
-    	}*/
-    }
-
-    private static String httpGet(String urlStr) throws IOException {
-    	URL url = new URL(urlStr);
-    	HttpURLConnection conn =
-    			(HttpURLConnection) url.openConnection();
-
-    	if (conn.getResponseCode() != 200) {
-    		throw new IOException(conn.getResponseMessage());
-    	}
-
-    	// Buffer the result into a string
-    	BufferedReader rd = new BufferedReader(
-    			new InputStreamReader(conn.getInputStream()));
-    	StringBuilder sb = new StringBuilder();
-    	String line;
-    	while ((line = rd.readLine()) != null) {
-    		sb.append(line);
-    	}
-    	rd.close();
-
-    	conn.disconnect();
-    	return sb.toString();
+    	// copy and paste following for each doctor.
+		docName = "Dr. John Smith";
+		names.add(docName);
+		affiliation.put(docName, "Cleveland Clinic");
+		phone.put(docName, "440-867-5309");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"arm", "leg", "body", "head"};
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
     }
 }
