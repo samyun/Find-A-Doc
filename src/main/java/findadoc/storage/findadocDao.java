@@ -13,14 +13,14 @@ public class findadocDao {
     }
 
     /**
-     * Reads and returns the {@link findadocGame} using user information from the session.
+     * Reads and returns the {@link findadocRunner} using user information from the session.
      * <p>
      * Returns null if the item could not be found in the database.
      * 
      * @param session
      * @return
      */
-    public findadocGame getfindadocGame(Session session) {
+    public findadocRunner getfindadocRunner(Session session) {
         findadocUserDataItem item = new findadocUserDataItem();
         item.setCustomerId(session.getUser().getUserId());
 
@@ -30,15 +30,15 @@ public class findadocDao {
             return null;
         }
 
-        return findadocGame.newInstance(session, item.getGameData());
+        return findadocRunner.newInstance(session, item.getGameData());
     }
 
     /**
-     * Saves the {@link findadocGame} into the database.
+     * Saves the {@link findadocRunner} into the database.
      * 
      * @param game
      */
-    public void savefindadocGame(findadocGame game) {
+    public void savefindadocRunner(findadocRunner game) {
         findadocUserDataItem item = new findadocUserDataItem();
         item.setCustomerId(game.getSession().getUser().getUserId());
         item.setGameData(game.getGameData());

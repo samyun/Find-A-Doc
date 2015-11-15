@@ -20,7 +20,7 @@ import java.net.URL;
 /**
  * Contains player and score data to represent a score keeper game.
  */
-public class findadocGameData {
+public class findadocRunnerData {
 	// names of the drugs
     private List<String> names;
     // number of doses left in the perscription period
@@ -36,17 +36,17 @@ public class findadocGameData {
     // number of refills allowed
     private Map<String, Long> numRefills;
 
-    public findadocGameData() {
+    public findadocRunnerData() {
         // public no-arg constructor required for DynamoDBMapper marshalling
     }
 
     /**
-     * Creates a new instance of {@link findadocGameData} with initialized and populated data from FHIR
+     * Creates a new instance of {@link findadocRunnerData} with initialized and populated data from FHIR
      * 
      * @return
      */
-    public static findadocGameData newInstance() {
-        findadocGameData newInstance = new findadocGameData();
+    public static findadocRunnerData newInstance() {
+        findadocRunnerData newInstance = new findadocRunnerData();
         
         ArrayList<String> names = new ArrayList<String>();
 

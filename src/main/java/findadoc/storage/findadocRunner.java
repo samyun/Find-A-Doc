@@ -13,27 +13,27 @@ import com.amazon.speech.speechlet.Session;
 /**
  * Represents a findadoc instance.
  */
-public final class findadocGame {
+public final class findadocRunner {
     private Session session;
-    private findadocGameData gameData;
+    private findadocRunnerData gameData;
 
-    private findadocGame() {
+    private findadocRunner() {
     }
 
     /**
-     * Creates a new instance of {@link findadocGame} with the provided {@link Session} and
-     * {@link findadocGameData}.
+     * Creates a new instance of {@link findadocRunner} with the provided {@link Session} and
+     * {@link findadocRunnerData}.
      * <p>
-     * To create a new instance of {@link findadocGameData}, see
-     * {@link findadocGameData#newInstance()}
+     * To create a new instance of {@link findadocRunnerData}, see
+     * {@link findadocRunnerData#newInstance()}
      * 
      * @param session
      * @param gameData
      * @return
-     * @see findadocGameData#newInstance()
+     * @see findadocRunnerData#newInstance()
      */
-    public static findadocGame newInstance(Session session, findadocGameData gameData) {
-        findadocGame game = new findadocGame();
+    public static findadocRunner newInstance(Session session, findadocRunnerData gameData) {
+        findadocRunner game = new findadocRunner();
         game.setSession(session);
         game.setGameData(gameData);
         return game;
@@ -47,11 +47,11 @@ public final class findadocGame {
         return session;
     }
 
-    protected findadocGameData getGameData() {
+    protected findadocRunnerData getGameData() {
         return gameData;
     }
 
-    protected void setGameData(findadocGameData gameData) {
+    protected void setGameData(findadocRunnerData gameData) {
         this.gameData = gameData;
     }
 

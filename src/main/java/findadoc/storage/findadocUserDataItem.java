@@ -19,9 +19,9 @@ public class findadocUserDataItem {
 
     private String customerId;
 
-    private findadocGameData gameData;
+    private findadocRunnerData gameData;
 
-    @DynamoDBHashKey(attributeName = "CustomerId")
+    @DynamoDBHashKey(attributeName = "DoctorID")
     public String getCustomerId() {
         return customerId;
     }
@@ -32,23 +32,23 @@ public class findadocUserDataItem {
 
     @DynamoDBAttribute(attributeName = "Data")
     @DynamoDBMarshalling(marshallerClass = findadocGameDataMarshaller.class)
-    public findadocGameData getGameData() {
+    public findadocRunnerData getGameData() {
         return gameData;
     }
 
-    public void setGameData(findadocGameData gameData) {
+    public void setGameData(findadocRunnerData gameData) {
         this.gameData = gameData;
     }
 
     /**
      * A {@link DynamoDBMarshaller} that provides marshalling and unmarshalling logic for
-     * {@link findadocGameData} values so that they can be persisted in the database as String.
+     * {@link findadocRunnerData} values so that they can be persisted in the database as String.
      */
     public static class findadocGameDataMarshaller implements
-            DynamoDBMarshaller<findadocGameData> {
+            DynamoDBMarshaller<findadocRunnerData> {
 
         @Override
-        public String marshall(findadocGameData gameData) {
+        public String marshall(findadocRunnerData gameData) {
             try {
                 return OBJECT_MAPPER.writeValueAsString(gameData);
             } catch (JsonProcessingException e) {
@@ -57,9 +57,9 @@ public class findadocUserDataItem {
         }
 
         @Override
-        public findadocGameData unmarshall(Class<findadocGameData> clazz, String value) {
+        public findadocRunnerData unmarshall(Class<findadocRunnerData> clazz, String value) {
             try {
-                return OBJECT_MAPPER.readValue(value, new TypeReference<findadocGameData>() {
+                return OBJECT_MAPPER.readValue(value, new TypeReference<findadocRunnerData>() {
                 });
             } catch (Exception e) {
                 throw new IllegalStateException("Unable to unmarshall game data value", e);

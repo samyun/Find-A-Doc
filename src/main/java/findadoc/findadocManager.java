@@ -10,8 +10,8 @@ import java.util.SortedMap;
 
 import findadoc.storage.findadocDao;
 import findadoc.storage.findadocDynamoDbClient;
-import findadoc.storage.findadocGame;
-import findadoc.storage.findadocGameData;
+import findadoc.storage.findadocRunner;
+import findadoc.storage.findadocRunnerData;
 
 import com.amazon.speech.slu.Intent;
 import com.amazon.speech.speechlet.LaunchRequest;
@@ -60,7 +60,7 @@ public class findadocManager {
         // Speak welcome message and ask user questions
         // based on whether there are players or not.
         String speechText, repromptText;
-        findadocGame game = findadocDao.getfindadocGame(session);
+        findadocRunner runner = findadocDao.getfindadocRunner(session);
 
         speechText = "Welcome to Echo M D, What can I do for you?";
 		repromptText = findadocTextUtil.NEXT_HELP;
@@ -85,24 +85,23 @@ public class findadocManager {
 		
 		
         // Load the previous instance
-        findadocGame game = findadocDao.getfindadocGame(session);
-        if (game == null) {
-            game = findadocGame.newInstance(session, findadocGameData.newInstance());
-        }
-		
+        findadocRunner runner = findadocDao.getfindadocRunner(session);
+        if (runner == null) {
+       }       runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+      
         String drugName =
                 findadocTextUtil.getDrugName(intent.getSlot(SLOT_DRUG_NAME).getValue());
         if (drugName == null) {
             String speechText = "Sorry, I didn't get that. What drug did you take?";
             return getAskSpeechletResponse(speechText, speechText);
-        }else if (!game.hasDrug(drugName.toLowerCase())) {
+        }else if (!runner.hasDrug(drugName.toLowerCase())) {
             String speechText = "You don't need to take any " + drugName + ", according to my system. Did you take a different drug?";
 			
             String responseText = "Did you take any other drugs? Say Stop to exit.";
             return getAskSpeechletResponse(speechText, responseText);
         }
 		
-        long maxDose = game.getDosesLeftInPeriodForDrug(drugName);        
+        long maxDose = runner.getDosesLeftInPeriodForDrug(drugName);        
         long dose = 0;
 		
         try {
@@ -124,15 +123,15 @@ public class findadocManager {
         }
 		
         // Subtract just taken from monthly prescription
-        game.removeDosesLeftInPeriodForDrug(drugName, dose);
+        runner.removeDosesLeftInPeriodForDrug(drugName, dose);
         
         // Add to daily total
-        game.addDosesTakenTodayForDrug(drugName, dose);
+        runner.addDosesTakenTodayForDrug(drugName, dose);
 		
         try
 		{
         // Reset last date
-        game.setLastDateToToday(drugName);
+        runner.setLastDateToToday(drugName);
 		}catch (Exception e)
 		{
 			return getTellSpeechletResponse("failed resetting");
@@ -144,21 +143,21 @@ public class findadocManager {
         try
 		{
         // Get data
-        pillsLeft = game.getDosesLeftInPeriodForDrug(drugName);
+        pillsLeft = runner.getDosesLeftInPeriodForDrug(drugName);
 		}catch (Exception e)
 		{
-			if (game.hasNumDosesForDrug(drugName))
+			if (runner.hasNumDosesForDrug(drugName))
 			{
 				return getTellSpeechletResponse("Has entries");
 				
 			}
-			String bleh = game.getNames().get(0) + " is in db, " + drugName + "was heard.";
+			String bleh = runner.getNames().get(0) + " is in db, " + drugName + "was heard.";
 			return getTellSpeechletResponse(bleh);
 		}
         try
 		{
         // Get data
-        refillsLeft = game.getNumRefillsForDrug(drugName);
+        refillsLeft = runner.getNumRefillsForDrug(drugName);
 		}catch (Exception e)
 		{
 			return getTellSpeechletResponse("failed getting refills");
@@ -166,8 +165,8 @@ public class findadocManager {
         
         if (pillsLeft == 0 && refillsLeft > 0)
         {
-        	game.removeOneNumRefillsOfDrug(drugName);
-        	game.resetDosesLeftInPeriodForDrug(drugName);
+        	runner.removeOneNumRefillsOfDrug(drugName);
+        	runner.resetDosesLeftInPeriodForDrug(drugName);
         }
 
         String speechText = "";
@@ -192,7 +191,7 @@ public class findadocManager {
         
         String repromptText = null;
 
-        if (game.getNumberOfDrugsInSystem() == 1) {
+        if (runner.getNumberOfDrugsInSystem() == 1) {
             speechText += "Do you need anything else?";
         } else {
             speechText += "Would you like to report another drug? Or do you need anything else?";
@@ -200,8 +199,8 @@ public class findadocManager {
         repromptText = findadocTextUtil.NEXT_HELP;
         
 
-        // Save the updated game
-        findadocDao.savefindadocGame(game);
+        // Save the updated runner
+        findadocDao.savefindadocRunner(runner);
 
         if (repromptText != null) {
             return getAskSpeechletResponse(speechText, repromptText);
@@ -225,27 +224,27 @@ public class findadocManager {
     public SpeechletResponse getNeedToTakeIntentResponse(Intent intent, Session session,
             SkillContext skillContext) {
 				
-        findadocGame game = findadocDao.getfindadocGame(session);
-        if (game == null) {
-            game.resyncFHIR();		
-			findadocDao.savefindadocGame(game);
+        findadocRunner runner = findadocDao.getfindadocRunner(session);
+        if (runner == null) {
+            runner.resyncFHIR();		
+			findadocDao.savefindadocRunner(runner);
         }
         
         TreeMap<String, Long> toTake = new TreeMap<String, Long>(String.CASE_INSENSITIVE_ORDER);
         ArrayList<String> notToTake = new ArrayList<String>();
         
 		
-        for (String s : game.getNames())
+        for (String s : runner.getNames())
         {
     		// if it has a valid last date for drug
-			if (game.hasLastDatesForDrug(s))
+			if (runner.hasLastDatesForDrug(s))
     		{
-            	long frequency = game.getFrequencyForDrug(s);
+            	long frequency = runner.getFrequencyForDrug(s);
             	if (frequency >= 1)
             	{
             		Calendar cal = Calendar.getInstance();
-            		long dosesTaken = game.getDosesTakenTodayForDrug(s);
-            		if (cal.getTimeInMillis() - game.getLastDatesForDrug(s).getTimeInMillis() < 86400000
+            		long dosesTaken = runner.getDosesTakenTodayForDrug(s);
+            		if (cal.getTimeInMillis() - runner.getLastDatesForDrug(s).getTimeInMillis() < 86400000
             				&& dosesTaken >= frequency)
             		{
             			notToTake.add(s);
@@ -253,15 +252,15 @@ public class findadocManager {
             		}
             		else
             		{
-            			toTake.put(s, frequency - game.getDosesTakenTodayForDrug(s));
+            			toTake.put(s, frequency - runner.getDosesTakenTodayForDrug(s));
 						//return getTellSpeechletResponse("2");
             		}
             	}
             	else
             	{
             		Calendar cal = Calendar.getInstance();
-            		long dosesTaken = game.getDosesTakenTodayForDrug(s);
-            		if (cal.getTimeInMillis() - game.getLastDatesForDrug(s).getTimeInMillis() < 86400000/frequency)
+            		long dosesTaken = runner.getDosesTakenTodayForDrug(s);
+            		if (cal.getTimeInMillis() - runner.getLastDatesForDrug(s).getTimeInMillis() < 86400000/frequency)
             		{
             			notToTake.add(s);
 						//return getTellSpeechletResponse("3");
@@ -275,7 +274,7 @@ public class findadocManager {
     		}
     		else
     		{
-    			toTake.put(s, game.getFrequencyForDrug(s));
+    			toTake.put(s, runner.getFrequencyForDrug(s));
     		}
 
         }
@@ -355,15 +354,15 @@ public class findadocManager {
     public SpeechletResponse getResetPlayersIntentResponse(Intent intent, Session session,
             SkillContext skillContext) {
 
-        findadocGame game = findadocDao.getfindadocGame(session);
-        if (game == null) {
-            game = findadocGame.newInstance(session, findadocGameData.newInstance());
+        findadocRunner runner = findadocDao.getfindadocRunner(session);
+        if (runner == null) {
+            runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
         }
 		else{
-            game.resyncFHIR();
+            runner.resyncFHIR();
         }
 		
-		findadocDao.savefindadocGame(game);
+		findadocDao.savefindadocRunner(runner);
 		String ssmlSpeech = "<speak>Successfully synced with the <phoneme alphabet=\"x-sampa\" ph=\"faI@r/\">FHIR</phoneme> service</speak>";
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
