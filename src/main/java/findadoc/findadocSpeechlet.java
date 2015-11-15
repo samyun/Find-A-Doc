@@ -54,21 +54,41 @@ public class findadocSpeechlet implements Speechlet {
         initializeComponents();
 
         Intent intent = request.getIntent();
-        if ("JustTookIntent".equals(intent.getName())) {
-            return findadocManager.getJustTookIntentResponse(intent, session, skillContext);
+        if ("PainIntent".equals(intent.getName())) {
+            return findadocManager.getPainIntentResponse(intent, session, skillContext);
 
-        } else if ("NeedToTakeIntent".equals(intent.getName())) {
-            return findadocManager.getNeedToTakeIntentResponse(intent, session, skillContext);
+        } else if ("SneezeIntent".equals(intent.getName())) {
+            return findadocManager.getSneezeIntentResponse(intent, session, skillContext);
 			
-        } else if ("ResetPlayersIntent".equals(intent.getName())) {
-            return findadocManager.getResetPlayersIntentResponse(intent, session, skillContext);
-			
+        } else if ("CoughIntent".equals(intent.getName())) {
+            return findadocManager.getCoughIntentResponse(intent, session, skillContext);
+		
+		else if ("SleepIntent".equals(intent.getName())) {
+            return findadocManager.getSleepIntentResponse(intent, session, skillContext);
+
+        }
+		
+		else if ("EmotionIntent".equals(intent.getName())) {
+            return findadocManager.getEmotionIntentResponse(intent, session, skillContext);
+
+        }
+		
+		else if ("ToothIntent".equals(intent.getName())) {
+            return findadocManager.getToothIntentResponse(intent, session, skillContext);
+
+        }
+		
+		else if ("VisionIntent".equals(intent.getName())) {
+            return findadocManager.getVisionIntentResponse(intent, session, skillContext);
+
+        }
+		
         } else if ("HelpIntent".equals(intent.getName())) {
             return findadocManager.getHelpIntentResponse(intent, session, skillContext);
 
         } else if ("ExitIntent".equals(intent.getName())) {
             return findadocManager.getExitIntentResponse(intent, session, skillContext);
-
+			
         } else {
             throw new IllegalArgumentException("Unrecognized intent: " + intent.getName());
         }
