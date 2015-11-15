@@ -239,5 +239,19 @@ public class findadocRunnerData {
 			affectedAreas.add(s);
 		}
 		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. George Hooper";
+		names.add(docName);
+		affiliation.put(docName, "Ohio Regional Medical Center");
+		phone.put(docName, "440-867-5317");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"None"};
+		specialty.put(docName, "General");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
     }
 }
