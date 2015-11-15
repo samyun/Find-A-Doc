@@ -89,23 +89,28 @@ public class findadocManager {
             session.setAttribute(SLOT_AMAZON_DURATION, painTime);      
             return getAskSpeechletResponse(speechText, speechText);
         }
+        
+        if(findadocTextUtil.isJointPain(painArea))
+        {
+        	if(painTime != null)
+        	{
+        		boolean time = false;
+        		char[] c = painTime.toCharArray();
+        		for (char ch : c)
+        		{
+        			if (ch == 'T')
+        				return runner.GetSpeechletResponse(SymptomType.JointPain);
+        		}
+        		return runner.GetSpeechletResponse(SymptomType.Arthritis);
+        	}
+        }
         return runner.GetSpeechletResponse(SymptomType.Pain);
 	}
 
 	public SpeechletResponse getSneezeIntentResponse(Intent intent, Session session, SkillContext skillContext) {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
-		
-		String sneezeTime =
-				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
-		
-		if (sneezeTime == null) {
-            String speechText = "How long have you been experiencing this?";
-			
-            String responseText = "How long have you been experiencing this symptom? Say Stop to exit.";
-            return getAskSpeechletResponse(speechText, responseText);
-        }
-		
+				
 		return runner.GetSpeechletResponse(SymptomType.Sneeze);
 		
 	}
@@ -114,15 +119,6 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 		
-		String sleepTime =
-				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
-		
-		if (sleepTime == null) {
-            String speechText = "How long have you been experiencing issues sleeping?";
-			
-            String responseText = "How long have you been experiencing this symptom? Say Stop to exit.";
-            return getAskSpeechletResponse(speechText, responseText);
-        }
 		
 		return runner.GetSpeechletResponse(SymptomType.Sleep);
 		
@@ -188,6 +184,23 @@ public class findadocManager {
             SkillContext skillContext) {
         return skillContext.needsMoreHelp() ? getTellSpeechletResponse("Are you satisfied with your care?")
                 : getTellSpeechletResponse("");
+    }
+		
+
+    /**
+     * Creates and returns response for the exit intent.
+     *
+     * @param intent
+     *            {@link Intent} for this request
+     * @param session
+     *            {@link Session} for this request
+     * @param skillContext
+     *            {@link SkillContext} for this request
+     * @return response for the exit intent
+     */
+    public SpeechletResponse getDyingIntentResponse(Intent intent, Session session,
+            SkillContext skillContext) {
+        return getTellSpeechletResponse("Oh, I see. Sorry, can't help you there. Call 911 for emergency services. Good luck!");
     }
 
     /**

@@ -254,7 +254,7 @@ public final class findadocRunner {
     	for (String s : list)
     	{
     		String specialty = map.get(s);
-    		if (specialty.equals("Joint Pain"))
+    		if (specialty.equals("JointPain"))
     			return s;
     	}
     	

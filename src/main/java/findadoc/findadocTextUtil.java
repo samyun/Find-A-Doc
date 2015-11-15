@@ -18,7 +18,7 @@ public final class findadocTextUtil {
     private static final List<String> NAME_WHITELIST = Arrays.asList("arm","leg","head","back","foot","ankle","ear",
     		"neck","hand","hands","arms","legs","knees","knee","feet","ankles","elbow","elbows","shoulder","shoulders",
     		"ears","toes","fingers","finger","thumb","thumbs","chest","butt","ass","thighs","tits","balls","dick","forearms",
-    		"nose");
+    		"nose","joints");
 
 												
     /**
@@ -135,5 +135,12 @@ public final class findadocTextUtil {
 
         
     	return recognizedDurationText;
+    }
+    
+    public static boolean isJointPain(String text)
+    {
+    	if (text.equals("joints"))
+    		return true;
+    	return false;
     }
 }

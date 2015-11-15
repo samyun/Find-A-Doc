@@ -226,7 +226,7 @@ public class findadocRunnerData {
 		}
 		areas.put(docName, affectedAreas);
 		
-		docName = "Dr. John	Dell";
+		docName = "Dr. John Dell";
 		names.add(docName);
 		affiliation.put(docName, "Ohio Regional Medical Center");
 		phone.put(docName, "440-867-5316");

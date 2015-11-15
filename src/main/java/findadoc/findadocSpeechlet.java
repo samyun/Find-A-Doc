@@ -78,6 +78,9 @@ public class findadocSpeechlet implements Speechlet {
         } else if ("ExitIntent".equals(intent.getName())) {
             return findadocManager.getExitIntentResponse(intent, session, skillContext);
 			
+        } else if ("DyingIntent".equals(intent.getName())) {
+            return findadocManager.getDyingIntentResponse(intent, session, skillContext);
+			
         } else {
             throw new IllegalArgumentException("Unrecognized intent: " + intent.getName());
         }
