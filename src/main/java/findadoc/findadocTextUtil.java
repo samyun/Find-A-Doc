@@ -15,10 +15,10 @@ public final class findadocTextUtil {
     /**
      * List of drug names blacklisted for this app.
      */
-    private static final List<String> NAME_WHITELIST = Arrays.asList("leg", "legs", 
-    												"arm", "arms", "feet", "foot", "knee",
-    												"knees", "back", "head", "shoulder", "shoulders",
-    												"hands", "hand");
+    private static final List<String> NAME_WHITELIST = Arrays.asList("arm","leg","head","back","foot","ankle","ear",
+    		"neck","hand","hands","arms","legs","knees","knee","feet","ankles","elbow","elbows","shoulder","shoulders",
+    		"ears","toes","fingers","finger","thumb","thumbs","chest","butt","ass","thighs","tits","balls","dick","forearms",
+    		"nose");
 
 												
     /**
