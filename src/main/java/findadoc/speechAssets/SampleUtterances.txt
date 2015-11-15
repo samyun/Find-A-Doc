@@ -122,64 +122,63 @@ SneezeIntent A sneeze
 SneezeIntent A sneeze since {time} ago
 SneezeIntent A sneeze since {time}
 SneezeIntent A sneeze for {time}
+SneezeIntent I'm coughing
+SneezeIntent I am coughing
+SneezeIntent I have been coughing
+SneezeIntent I keep coughing
+SneezeIntent Coughing
+SneezeIntent I can't stop coughing
+SneezeIntent I cannot stop coughing
+SneezeIntent Coughs
+SneezeIntent Cough
+SneezeIntent Can't stop coughing
+SneezeIntent Keep coughing
+SneezeIntent I constantly cough
+SneezeIntent I'm coughing constantly
+SneezeIntent I'm coughing for {time}
+SneezeIntent I am coughing for {time}
+SneezeIntent I have been coughing for {time}
+SneezeIntent I keep coughing for {time}
+SneezeIntent Coughing for {time}
+SneezeIntent I can't stop coughing for {time}
+SneezeIntent I cannot stop coughing for {time}
+SneezeIntent Coughs for {time}
+SneezeIntent Cough for {time}
+SneezeIntent Can't stop coughing for {time}
+SneezeIntent Keep coughing for {time}
+SneezeIntent I constantly cough for {time}
+SneezeIntent I'm coughing constantly for {time}
+SneezeIntent I'm coughing since {time} ago
+SneezeIntent I am coughing since {time} ago
+SneezeIntent I have been coughing since {time} ago
+SneezeIntent I keep coughing since {time} ago
+SneezeIntent Coughing since {time} ago
+SneezeIntent I can't stop coughing since {time} ago
+SneezeIntent I cannot stop coughing since {time} ago
+SneezeIntent Coughs since {time} ago
+SneezeIntent Cough since {time} ago
+SneezeIntent Can't stop coughing since {time} ago
+SneezeIntent Keep coughing since {time} ago
+SneezeIntent I constantly cough since {time} ago
+SneezeIntent I'm coughing constantly since {time} ago
+SneezeIntent I'm coughing since {time}
+SneezeIntent I am coughing since {time}
+SneezeIntent I have been coughing since {time}
+SneezeIntent I keep coughing since {time}
+SneezeIntent Coughing since {time}
+SneezeIntent I can't stop coughing since {time}
+SneezeIntent I cannot stop coughing since {time}
+SneezeIntent Coughs since {time}
+SneezeIntent Cough since {time}
+SneezeIntent Can't stop coughing since {time}
+SneezeIntent Keep coughing since {time}
+SneezeIntent I constantly cough since {time}
+SneezeIntent I'm coughing constantly since {time}
+SneezeIntent A cough
+SneezeIntent A cough since {time}
+SneezeIntent A cough since {time} ago
+SneezeIntent A cough for {time}
 
-
-CoughIntent I'm coughing
-CoughIntent I am coughing
-CoughIntent I have been coughing
-CoughIntent I keep coughing
-CoughIntent Coughing
-CoughIntent I can't stop coughing
-CoughIntent I cannot stop coughing
-CoughIntent Coughs
-CoughIntent Cough
-CoughIntent Can't stop coughing
-CoughIntent Keep coughing
-CoughIntent I constantly cough
-CoughIntent I'm coughing constantly
-CoughIntent I'm coughing for {time}
-CoughIntent I am coughing for {time}
-CoughIntent I have been coughing for {time}
-CoughIntent I keep coughing for {time}
-CoughIntent Coughing for {time}
-CoughIntent I can't stop coughing for {time}
-CoughIntent I cannot stop coughing for {time}
-CoughIntent Coughs for {time}
-CoughIntent Cough for {time}
-CoughIntent Can't stop coughing for {time}
-CoughIntent Keep coughing for {time}
-CoughIntent I constantly cough for {time}
-CoughIntent I'm coughing constantly for {time}
-CoughIntent I'm coughing since {time} ago
-CoughIntent I am coughing since {time} ago
-CoughIntent I have been coughing since {time} ago
-CoughIntent I keep coughing since {time} ago
-CoughIntent Coughing since {time} ago
-CoughIntent I can't stop coughing since {time} ago
-CoughIntent I cannot stop coughing since {time} ago
-CoughIntent Coughs since {time} ago
-CoughIntent Cough since {time} ago
-CoughIntent Can't stop coughing since {time} ago
-CoughIntent Keep coughing since {time} ago
-CoughIntent I constantly cough since {time} ago
-CoughIntent I'm coughing constantly since {time} ago
-CoughIntent I'm coughing since {time}
-CoughIntent I am coughing since {time}
-CoughIntent I have been coughing since {time}
-CoughIntent I keep coughing since {time}
-CoughIntent Coughing since {time}
-CoughIntent I can't stop coughing since {time}
-CoughIntent I cannot stop coughing since {time}
-CoughIntent Coughs since {time}
-CoughIntent Cough since {time}
-CoughIntent Can't stop coughing since {time}
-CoughIntent Keep coughing since {time}
-CoughIntent I constantly cough since {time}
-CoughIntent I'm coughing constantly since {time}
-CoughIntent A cough
-CoughIntent A cough since {time}
-CoughIntent A cough since {time} ago
-CoughIntent A cough for {time}
 
 SleepIntent I can't sleep
 SleepIntent I cannot sleep
