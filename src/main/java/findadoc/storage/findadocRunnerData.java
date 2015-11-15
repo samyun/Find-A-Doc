@@ -126,13 +126,28 @@ public class findadocRunnerData {
     	String[] areaList = {"None"};
 		
     	// copy and paste following for each doctor.
-		docName = "Dr. John Smith";
+		docName = "Dr. Jenny Smith";
 		names.add(docName);
 		affiliation.put(docName, "Cleveland Clinic");
 		phone.put(docName, "440-867-5309");
 		maxDuration.put(docName, "None");	// None if no max duration of symptom
 		affectedAreas = new ArrayList<>();
 		areaList = new String[]{"arm", "leg", "body", "head"};
+		specialty.put(docName, "Pain");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. Jenny Smith";
+		names.add(docName);
+		affiliation.put(docName, "Cleveland Clinic");
+		phone.put(docName, "440-867-5309");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"arm", "leg", "body", "head"};
+		specialty.put(docName, "Pain");
 		for(String s : areaList)
 		{
 			affectedAreas.add(s);

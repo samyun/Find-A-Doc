@@ -112,6 +112,7 @@ public class findadocManager {
             return getAskSpeechletResponse(speechText, responseText);
         }
 		
+		SpeechletResponse speech = runner.makeUpAFunction(sneezeTime,)
 		
 	}
 
