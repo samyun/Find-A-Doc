@@ -447,4 +447,39 @@ public class findadocManager {
 
         return SpeechletResponse.newTellResponse(speech, card);
     }
+
+	public SpeechletResponse getPainIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getSneezeIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getCoughIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getSleepIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getEmotionIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getToothIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SpeechletResponse getVisionIntentResponse(Intent intent, Session session, SkillContext skillContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
