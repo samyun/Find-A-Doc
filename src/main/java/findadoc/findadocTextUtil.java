@@ -48,7 +48,6 @@ public final class findadocTextUtil {
         if (recognizedAreaName == null || recognizedAreaName.isEmpty()) {
             return null;
         }
-
         String cleanedName;
         if (recognizedAreaName.contains(" ")) {
             // the name should only contain a first name, so ignore the second part if any
@@ -97,11 +96,11 @@ public final class findadocTextUtil {
         	isTime = false;
         }
         
+        int l = recognizedDurationText.length();
         // if all but last char is a number, it's valid thus far
         if (isTime)
         {
-        	int l = recognizedDurationText.length();
-        	for (int i = 2; i < l-1;i++)
+        	for (int i = 2; i < l-2;i++)
         	{
         		if (!Character.isDigit(recognizedDurationText.charAt(i)))
         		{
@@ -111,8 +110,7 @@ public final class findadocTextUtil {
         }
         else if (isDay)
         {
-        	int l = recognizedDurationText.length();
-        	for (int i = 2; i < l-1;i++)
+        	for (int i = 2; i < l-2;i++)
         	{
         		if (!Character.isDigit(recognizedDurationText.charAt(i)))
         		{
@@ -120,20 +118,21 @@ public final class findadocTextUtil {
         		}
         	}
         }
-        
+
         //if last char is not SMHDWY, it's invalid.
         if (isTime)
         {
-        	char c = recognizedDurationText.charAt(recognizedDurationText.length());
+        	char c = recognizedDurationText.charAt(l-1);
         	if (c != 'S' && c != 'M' && c != 'H')
         		return null;
         }
         else if (isDay)
         {
-        	char c = recognizedDurationText.charAt(recognizedDurationText.length());
+        	char c = recognizedDurationText.charAt(l-1);
         	if (c != 'D' && c != 'W' && c != 'M' && c != 'Y')
         		return null;
         }
+
         
     	return recognizedDurationText;
     }

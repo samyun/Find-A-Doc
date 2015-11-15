@@ -95,8 +95,15 @@ public final class findadocRunner {
     			docName = GetDocNameForGeneral();
     			break;
     	}
-    	
     	return GetResponse(docName);
+    }
+    
+    private SpeechletResponse Test()
+    {
+    	PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
+    	String speechText = "Testing";
+    	speech.setText(speechText);
+    	return SpeechletResponse.newTellResponse(speech);
     }
     
     private SpeechletResponse GetResponse(String docName)

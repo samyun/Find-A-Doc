@@ -8,63 +8,63 @@ PainIntent I pain
 PainIntent I hurt
 PainIntent Hurt pain
 PainIntent pain hurt
-PainIntent My {area} is in pain
-PainIntent My {area} hurts
-PainIntent My {area} hurt
-PainIntent {area} hurt
-PainIntent {area} is hurt
-PainIntent {area} is in pain
-PainIntent {area} in pain
-PainIntent {area} pain
-PainIntent {area} pains
-PainIntent {area} hurts
-PainIntent hurt {area}
-PainIntent pain in {area}
-PainIntent pain {area}
-PainIntent My {area} is hurt
-PainIntent My {area} is hurt for {time}
-PainIntent My {area} is in pain for {time}
-PainIntent My {area} has hurt for {time}
-PainIntent My {area} hurt since {time}
-PainIntent {area} hurt for {time}
-PainIntent {area} is hurt for {time}
-PainIntent {area} is in pain for {time}
-PainIntent {area} in pain for {time}
-PainIntent {area} pain for {time}
-PainIntent {area} pains for {time}
-PainIntent {area} hurts for {time}
-PainIntent hurt {area} for {time}
-PainIntent pain in {area} for {time}
-PainIntent pain {area} for {time}
-PainIntent My {area} is in pain since {time}
-PainIntent My {area} hurts since {time}
-PainIntent My {area} hurt since {time}
-PainIntent {area} hurt since {time}
-PainIntent {area} is hurt since {time}
-PainIntent {area} is in pain since {time}
-PainIntent {area} in pain since {time}
-PainIntent {area} pain since {time}
-PainIntent {area} pains since {time}
-PainIntent {area} hurts since {time}
-PainIntent hurt {area} since {time}
-PainIntent pain in {area} since {time}
-PainIntent pain {area} since {time}
-PainIntent My {area} is in pain since {time} ago
-PainIntent My {area} hurts since {time} ago
-PainIntent My {area} hurt since {time} ago
-PainIntent {area} hurt since {time} ago
-PainIntent {area} is hurt since {time} ago
-PainIntent {area} is in pain since {time} ago
-PainIntent {area} in pain since {time} ago
-PainIntent {area} pain since {time} ago
-PainIntent {area} pains since {time} ago
-PainIntent {area} hurts since {time} ago
-PainIntent hurt {area} since {time} ago
-PainIntent pain in {area} since {time} ago
-PainIntent pain {area} since {time} ago
-PainIntent I've been in pain for {time}
-PainIntent I've been in pain since {time}
-PainIntent I've been in pain since {time} ago
+PainIntent My {AreaOfPain} is in pain
+PainIntent My {AreaOfPain} hurts
+PainIntent My {AreaOfPain} hurt
+PainIntent {AreaOfPain} hurt
+PainIntent {AreaOfPain} is hurt
+PainIntent {AreaOfPain} is in pain
+PainIntent {AreaOfPain} in pain
+PainIntent {AreaOfPain} pain
+PainIntent {AreaOfPain} pains
+PainIntent {AreaOfPain} hurts
+PainIntent hurt {AreaOfPain}
+PainIntent pain in {AreaOfPain}
+PainIntent pain {AreaOfPain}
+PainIntent My {AreaOfPain} is hurt
+PainIntent My {AreaOfPain} is hurt for {TimeDuration}
+PainIntent My {AreaOfPain} is in pain for {TimeDuration}
+PainIntent My {AreaOfPain} has hurt for {TimeDuration}
+PainIntent My {AreaOfPain} hurt since {TimeDuration}
+PainIntent {AreaOfPain} hurt for {TimeDuration}
+PainIntent {AreaOfPain} is hurt for {TimeDuration}
+PainIntent {AreaOfPain} is in pain for {TimeDuration}
+PainIntent {AreaOfPain} in pain for {TimeDuration}
+PainIntent {AreaOfPain} pain for {TimeDuration}
+PainIntent {AreaOfPain} pains for {TimeDuration}
+PainIntent {AreaOfPain} hurts for {TimeDuration}
+PainIntent hurt {AreaOfPain} for {TimeDuration}
+PainIntent pain in {AreaOfPain} for {TimeDuration}
+PainIntent pain {AreaOfPain} for {TimeDuration}
+PainIntent My {AreaOfPain} is in pain since {TimeDuration}
+PainIntent My {AreaOfPain} hurts since {TimeDuration}
+PainIntent My {AreaOfPain} hurt since {TimeDuration}
+PainIntent {AreaOfPain} hurt since {TimeDuration}
+PainIntent {AreaOfPain} is hurt since {TimeDuration}
+PainIntent {AreaOfPain} is in pain since {TimeDuration}
+PainIntent {AreaOfPain} in pain since {TimeDuration}
+PainIntent {AreaOfPain} pain since {TimeDuration}
+PainIntent {AreaOfPain} pains since {TimeDuration}
+PainIntent {AreaOfPain} hurts since {TimeDuration}
+PainIntent hurt {AreaOfPain} since {TimeDuration}
+PainIntent pain in {AreaOfPain} since {TimeDuration}
+PainIntent pain {AreaOfPain} since {TimeDuration}
+PainIntent My {AreaOfPain} is in pain since {TimeDuration} ago
+PainIntent My {AreaOfPain} hurts since {TimeDuration} ago
+PainIntent My {AreaOfPain} hurt since {TimeDuration} ago
+PainIntent {AreaOfPain} hurt since {TimeDuration} ago
+PainIntent {AreaOfPain} is hurt since {TimeDuration} ago
+PainIntent {AreaOfPain} is in pain since {TimeDuration} ago
+PainIntent {AreaOfPain} in pain since {TimeDuration} ago
+PainIntent {AreaOfPain} pain since {TimeDuration} ago
+PainIntent {AreaOfPain} pains since {TimeDuration} ago
+PainIntent {AreaOfPain} hurts since {TimeDuration} ago
+PainIntent hurt {AreaOfPain} since {TimeDuration} ago
+PainIntent pain in {AreaOfPain} since {TimeDuration} ago
+PainIntent pain {AreaOfPain} since {TimeDuration} ago
+PainIntent I've been in pain for {TimeDuration}
+PainIntent I've been in pain since {TimeDuration}
+PainIntent I've been in pain since {TimeDuration} ago
 
 SneezeIntent I'm sneezing
 SneezeIntent I am sneezing
@@ -79,49 +79,49 @@ SneezeIntent Can't stop sneezing
 SneezeIntent Keep sneezing
 SneezeIntent I constantly sneeze
 SneezeIntent I'm sneezing constantly
-SneezeIntent I'm sneezing for {time}
-SneezeIntent I am sneezing for {time}
-SneezeIntent I have been sneezing for {time}
-SneezeIntent I keep sneezing for {time}
-SneezeIntent Sneezing for {time}
-SneezeIntent I can't stop sneezing for {time}
-SneezeIntent I cannot stop sneezing for {time}
-SneezeIntent Sneezes for {time}
-SneezeIntent Sneeze for {time}
-SneezeIntent Can't stop sneezing for {time}
-SneezeIntent Keep sneezing for {time}
-SneezeIntent I constantly sneeze for {time}
-SneezeIntent I'm sneezing constantly for {time}
-SneezeIntent I'm sneezing since {time} ago
-SneezeIntent I am sneezing since {time} ago
-SneezeIntent I have been sneezing since {time} ago
-SneezeIntent I keep sneezing since {time} ago
-SneezeIntent Sneezing since {time} ago
-SneezeIntent I can't stop sneezing since {time} ago
-SneezeIntent I cannot stop sneezing since {time} ago
-SneezeIntent Sneezes since {time} ago
-SneezeIntent Sneeze since {time} ago
-SneezeIntent Can't stop sneezing since {time} ago
-SneezeIntent Keep sneezing since {time} ago
-SneezeIntent I constantly sneeze since {time} ago
-SneezeIntent I'm sneezing constantly since {time} ago
-SneezeIntent I'm sneezing since {time}
-SneezeIntent I am sneezing since {time}
-SneezeIntent I have been sneezing since {time}
-SneezeIntent I keep sneezing since {time}
-SneezeIntent Sneezing since {time}
-SneezeIntent I can't stop sneezing since {time}
-SneezeIntent I cannot stop sneezing since {time}
-SneezeIntent Sneezes since {time}
-SneezeIntent Sneeze since {time}
-SneezeIntent Can't stop sneezing since {time}
-SneezeIntent Keep sneezing since {time}
-SneezeIntent I constantly sneeze since {time}
-SneezeIntent I'm sneezing constantly since {time}
+SneezeIntent I'm sneezing for {TimeDuration}
+SneezeIntent I am sneezing for {TimeDuration}
+SneezeIntent I have been sneezing for {TimeDuration}
+SneezeIntent I keep sneezing for {TimeDuration}
+SneezeIntent Sneezing for {TimeDuration}
+SneezeIntent I can't stop sneezing for {TimeDuration}
+SneezeIntent I cannot stop sneezing for {TimeDuration}
+SneezeIntent Sneezes for {TimeDuration}
+SneezeIntent Sneeze for {TimeDuration}
+SneezeIntent Can't stop sneezing for {TimeDuration}
+SneezeIntent Keep sneezing for {TimeDuration}
+SneezeIntent I constantly sneeze for {TimeDuration}
+SneezeIntent I'm sneezing constantly for {TimeDuration}
+SneezeIntent I'm sneezing since {TimeDuration} ago
+SneezeIntent I am sneezing since {TimeDuration} ago
+SneezeIntent I have been sneezing since {TimeDuration} ago
+SneezeIntent I keep sneezing since {TimeDuration} ago
+SneezeIntent Sneezing since {TimeDuration} ago
+SneezeIntent I can't stop sneezing since {TimeDuration} ago
+SneezeIntent I cannot stop sneezing since {TimeDuration} ago
+SneezeIntent Sneezes since {TimeDuration} ago
+SneezeIntent Sneeze since {TimeDuration} ago
+SneezeIntent Can't stop sneezing since {TimeDuration} ago
+SneezeIntent Keep sneezing since {TimeDuration} ago
+SneezeIntent I constantly sneeze since {TimeDuration} ago
+SneezeIntent I'm sneezing constantly since {TimeDuration} ago
+SneezeIntent I'm sneezing since {TimeDuration}
+SneezeIntent I am sneezing since {TimeDuration}
+SneezeIntent I have been sneezing since {TimeDuration}
+SneezeIntent I keep sneezing since {TimeDuration}
+SneezeIntent Sneezing since {TimeDuration}
+SneezeIntent I can't stop sneezing since {TimeDuration}
+SneezeIntent I cannot stop sneezing since {TimeDuration}
+SneezeIntent Sneezes since {TimeDuration}
+SneezeIntent Sneeze since {TimeDuration}
+SneezeIntent Can't stop sneezing since {TimeDuration}
+SneezeIntent Keep sneezing since {TimeDuration}
+SneezeIntent I constantly sneeze since {TimeDuration}
+SneezeIntent I'm sneezing constantly since {TimeDuration}
 SneezeIntent A sneeze
-SneezeIntent A sneeze since {time} ago
-SneezeIntent A sneeze since {time}
-SneezeIntent A sneeze for {time}
+SneezeIntent A sneeze since {TimeDuration} ago
+SneezeIntent A sneeze since {TimeDuration}
+SneezeIntent A sneeze for {TimeDuration}
 SneezeIntent I'm coughing
 SneezeIntent I am coughing
 SneezeIntent I have been coughing
@@ -135,49 +135,49 @@ SneezeIntent Can't stop coughing
 SneezeIntent Keep coughing
 SneezeIntent I constantly cough
 SneezeIntent I'm coughing constantly
-SneezeIntent I'm coughing for {time}
-SneezeIntent I am coughing for {time}
-SneezeIntent I have been coughing for {time}
-SneezeIntent I keep coughing for {time}
-SneezeIntent Coughing for {time}
-SneezeIntent I can't stop coughing for {time}
-SneezeIntent I cannot stop coughing for {time}
-SneezeIntent Coughs for {time}
-SneezeIntent Cough for {time}
-SneezeIntent Can't stop coughing for {time}
-SneezeIntent Keep coughing for {time}
-SneezeIntent I constantly cough for {time}
-SneezeIntent I'm coughing constantly for {time}
-SneezeIntent I'm coughing since {time} ago
-SneezeIntent I am coughing since {time} ago
-SneezeIntent I have been coughing since {time} ago
-SneezeIntent I keep coughing since {time} ago
-SneezeIntent Coughing since {time} ago
-SneezeIntent I can't stop coughing since {time} ago
-SneezeIntent I cannot stop coughing since {time} ago
-SneezeIntent Coughs since {time} ago
-SneezeIntent Cough since {time} ago
-SneezeIntent Can't stop coughing since {time} ago
-SneezeIntent Keep coughing since {time} ago
-SneezeIntent I constantly cough since {time} ago
-SneezeIntent I'm coughing constantly since {time} ago
-SneezeIntent I'm coughing since {time}
-SneezeIntent I am coughing since {time}
-SneezeIntent I have been coughing since {time}
-SneezeIntent I keep coughing since {time}
-SneezeIntent Coughing since {time}
-SneezeIntent I can't stop coughing since {time}
-SneezeIntent I cannot stop coughing since {time}
-SneezeIntent Coughs since {time}
-SneezeIntent Cough since {time}
-SneezeIntent Can't stop coughing since {time}
-SneezeIntent Keep coughing since {time}
-SneezeIntent I constantly cough since {time}
-SneezeIntent I'm coughing constantly since {time}
+SneezeIntent I'm coughing for {TimeDuration}
+SneezeIntent I am coughing for {TimeDuration}
+SneezeIntent I have been coughing for {TimeDuration}
+SneezeIntent I keep coughing for {TimeDuration}
+SneezeIntent Coughing for {TimeDuration}
+SneezeIntent I can't stop coughing for {TimeDuration}
+SneezeIntent I cannot stop coughing for {TimeDuration}
+SneezeIntent Coughs for {TimeDuration}
+SneezeIntent Cough for {TimeDuration}
+SneezeIntent Can't stop coughing for {TimeDuration}
+SneezeIntent Keep coughing for {TimeDuration}
+SneezeIntent I constantly cough for {TimeDuration}
+SneezeIntent I'm coughing constantly for {TimeDuration}
+SneezeIntent I'm coughing since {TimeDuration} ago
+SneezeIntent I am coughing since {TimeDuration} ago
+SneezeIntent I have been coughing since {TimeDuration} ago
+SneezeIntent I keep coughing since {TimeDuration} ago
+SneezeIntent Coughing since {TimeDuration} ago
+SneezeIntent I can't stop coughing since {TimeDuration} ago
+SneezeIntent I cannot stop coughing since {TimeDuration} ago
+SneezeIntent Coughs since {TimeDuration} ago
+SneezeIntent Cough since {TimeDuration} ago
+SneezeIntent Can't stop coughing since {TimeDuration} ago
+SneezeIntent Keep coughing since {TimeDuration} ago
+SneezeIntent I constantly cough since {TimeDuration} ago
+SneezeIntent I'm coughing constantly since {TimeDuration} ago
+SneezeIntent I'm coughing since {TimeDuration}
+SneezeIntent I am coughing since {TimeDuration}
+SneezeIntent I have been coughing since {TimeDuration}
+SneezeIntent I keep coughing since {TimeDuration}
+SneezeIntent Coughing since {TimeDuration}
+SneezeIntent I can't stop coughing since {TimeDuration}
+SneezeIntent I cannot stop coughing since {TimeDuration}
+SneezeIntent Coughs since {TimeDuration}
+SneezeIntent Cough since {TimeDuration}
+SneezeIntent Can't stop coughing since {TimeDuration}
+SneezeIntent Keep coughing since {TimeDuration}
+SneezeIntent I constantly cough since {TimeDuration}
+SneezeIntent I'm coughing constantly since {TimeDuration}
 SneezeIntent A cough
-SneezeIntent A cough since {time}
-SneezeIntent A cough since {time} ago
-SneezeIntent A cough for {time}
+SneezeIntent A cough since {TimeDuration}
+SneezeIntent A cough since {TimeDuration} ago
+SneezeIntent A cough for {TimeDuration}
 
 
 SleepIntent I can't sleep

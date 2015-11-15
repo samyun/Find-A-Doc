@@ -29,10 +29,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
  * drugs.
  */
 public class findadocManager {
-    /**
-     * Intent slot for the type of pain.
-     */
-    private static final String SLOT_TYPE_PAIN = "TypeOfPain";
 
     /**
      * Intent slot for area of body with the issue.
@@ -67,7 +63,7 @@ public class findadocManager {
         String speechText, repromptText;
         findadocRunner runner = findadocDao.getfindadocRunner(session);
 
-        speechText = "Welcome to Find A Doc, What can I do for you?";
+        speechText = "Welcome to Find A Doc, how can I help you find a doctor?";
 		repromptText = findadocTextUtil.NEXT_HELP;
         return getAskSpeechletResponse(speechText, repromptText);
     }
@@ -77,25 +73,22 @@ public class findadocManager {
 	public SpeechletResponse getPainIntentResponse(Intent intent, Session session, SkillContext skillContext) {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
-		
+
 		String painArea =
-				findadocTextUtil.getPainAreaName(intent.getSlot(SLOT_TYPE_PAIN).getValue());
+				findadocTextUtil.getPainAreaName(intent.getSlot(SLOT_TYPE_AREA).getValue());
+
 		String painTime =
 				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
         if (painArea == null && painTime == null) {
             String speechText = "Where are you hurt?";
             return getAskSpeechletResponse(speechText, speechText);
-        }else if (painArea != null && painTime == null) {
-            String speechText = "How long have you been experiencing pain there?";
-			
-            String responseText = "How long have you been hurt?";
-            return getAskSpeechletResponse(speechText, responseText);
         }else if (painArea == null && painTime != null)
         {
             String speechText = "Where are you experiencing pain?";
+
+            session.setAttribute(SLOT_AMAZON_DURATION, painTime);      
             return getAskSpeechletResponse(speechText, speechText);
         }
-		
         return runner.GetSpeechletResponse(SymptomType.Pain);
 	}
 
@@ -125,7 +118,7 @@ public class findadocManager {
 				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
 		
 		if (sleepTime == null) {
-            String speechText = "How long have you been experiencing this?";
+            String speechText = "How long have you been experiencing issues sleeping?";
 			
             String responseText = "How long have you been experiencing this symptom? Say Stop to exit.";
             return getAskSpeechletResponse(speechText, responseText);
@@ -193,8 +186,7 @@ public class findadocManager {
      */
     public SpeechletResponse getExitIntentResponse(Intent intent, Session session,
             SkillContext skillContext) {
-        return skillContext.needsMoreHelp() ? getTellSpeechletResponse("Why does it "
-                + "take a minute to say hello, but forever to say goodbye?")
+        return skillContext.needsMoreHelp() ? getTellSpeechletResponse("Are you satisfied with your care?")
                 : getTellSpeechletResponse("");
     }
 
