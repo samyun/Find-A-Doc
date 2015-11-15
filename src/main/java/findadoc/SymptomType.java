@@ -6,5 +6,6 @@ public enum SymptomType
 	Emotion,
 	Tooth,
 	Vision,
-	Arthritis
+	Arthritis,
+	JointPain
 }
