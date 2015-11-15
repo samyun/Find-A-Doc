@@ -140,14 +140,98 @@ public class findadocRunnerData {
 		}
 		areas.put(docName, affectedAreas);
 		
-		docName = "Dr. Jenny Smith";
+		docName = "Dr. Mike Smith";
 		names.add(docName);
-		affiliation.put(docName, "Cleveland Clinic");
-		phone.put(docName, "440-867-5309");
+		affiliation.put(docName, "The Ohio State Medical Center");
+		phone.put(docName, "440-867-5310");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"none"};
+		specialty.put(docName, "Sneeze");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. Kate Lee";
+		names.add(docName);
+		affiliation.put(docName, "University Hospital Geneva Medical Center");
+		phone.put(docName, "440-867-5311");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"None"};
+		specialty.put(docName, "Sleep");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. Andrew Wells";
+		names.add(docName);
+		affiliation.put(docName, "Ohio Department of Mental Health");
+		phone.put(docName, "440-867-5312");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"None"};
+		specialty.put(docName, "Emotion");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. Steve Jones";
+		names.add(docName);
+		affiliation.put(docName, "Columbus City Dental Clinic");
+		phone.put(docName, "440-867-5313");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"None"};
+		specialty.put(docName, "Tooth");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. James Falcon";
+		names.add(docName);
+		affiliation.put(docName, "Southeastern Ohio Regional Medical Center");
+		phone.put(docName, "440-867-5314");
+		maxDuration.put(docName, "None");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"None"};
+		specialty.put(docName, "Vision");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. Arthur Jobs";
+		names.add(docName);
+		affiliation.put(docName, "Ohio State University Wexner Medical Center");
+		phone.put(docName, "440-867-5315");
 		maxDuration.put(docName, "None");	// None if no max duration of symptom
 		affectedAreas = new ArrayList<>();
 		areaList = new String[]{"arm", "leg", "body", "head"};
-		specialty.put(docName, "Pain");
+		specialty.put(docName, "Arthritis");
+		for(String s : areaList)
+		{
+			affectedAreas.add(s);
+		}
+		areas.put(docName, affectedAreas);
+		
+		docName = "Dr. John	Dell";
+		names.add(docName);
+		affiliation.put(docName, "Ohio Regional Medical Center");
+		phone.put(docName, "440-867-5316");
+		maxDuration.put(docName, "6 months");	// None if no max duration of symptom
+		affectedAreas = new ArrayList<>();
+		areaList = new String[]{"arm", "leg", "body", "head"};
+		specialty.put(docName, "JointPain");
 		for(String s : areaList)
 		{
 			affectedAreas.add(s);
