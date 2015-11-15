@@ -96,7 +96,6 @@ public class findadocManager {
             return getAskSpeechletResponse(speechText, speechText);
         }
 		
-        return runner.GetSpeechletResponse(SymptomType.Pain);
 	}
 
 	public SpeechletResponse getSneezeIntentResponse(Intent intent, Session session, SkillContext skillContext) {
@@ -113,7 +112,7 @@ public class findadocManager {
             return getAskSpeechletResponse(speechText, responseText);
         }
 		
-		return runner.GetSpeechletResponse(SymptomType.Sneeze);
+		return runner.makeUpAFunction(sneezeTime, SymptomType.Sneeze);
 		
 	}
 
@@ -131,7 +130,7 @@ public class findadocManager {
             return getAskSpeechletResponse(speechText, responseText);
         }
 		
-		return runner.GetSpeechletResponse(SymptomType.Sleep);
+		return runner.GetSpeechletResponse(SymptomType.Sleep, sleepTime);
 		
 	}
 
@@ -139,7 +138,7 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 
-		return runner.GetSpeechletResponse(SymptomType.Emotion);
+		return runner.makeUpAFunction(SymptomType.Emotion);
 		
 	}
 
@@ -148,7 +147,7 @@ public class findadocManager {
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 		
 		
-		return runner.GetSpeechletResponse(SymptomType.Tooth);
+		return runner.makeUpAFunction(SymptomType.Tooth);
 		
 	}
 
@@ -156,7 +155,7 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 
-		return runner.GetSpeechletResponse(SymptomType.Vision);
+		return runner.makeUpAFunction(SymptomType.Vision);
 		
 	}
     
@@ -432,6 +431,42 @@ public class findadocManager {
                 findadocTextUtil.COMPLETE_HELP + " So, how can I help?",
                 findadocTextUtil.NEXT_HELP)
                 : getTellSpeechletResponse(findadocTextUtil.COMPLETE_HELP);
+    }
+	
+	/**
+     * Creates and returns response for the exit intent.
+     *
+     * @param intent
+     *            {@link Intent} for this request
+     * @param session
+     *            {@link Session} for this request
+     * @param skillContext
+     *            {@link SkillContext} for this request
+     * @return response for the reset intent
+     */
+    public SpeechletResponse getResetPlayersIntentResponse(Intent intent, Session session,
+            SkillContext skillContext) {
+
+        findadocRunner runner = findadocDao.getfindadocRunner(session);
+        if (runner == null) {
+            runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+        }
+		else{
+            runner.resyncFHIR();
+        }
+		
+		findadocDao.savefindadocRunner(runner);
+		String ssmlSpeech = "<speak>Successfully synced with the <phoneme alphabet=\"x-sampa\" ph=\"faI@r/\">FHIR</phoneme> service</speak>";
+        // Create the Simple card content.
+        SimpleCard card = new SimpleCard();
+        card.setTitle("Find A Doc");
+        card.setContent("Successfully synced with the FHIR service");
+
+        // Create the plain text output.
+        SsmlOutputSpeech speech = new SsmlOutputSpeech();
+        speech.setSsml(ssmlSpeech);
+
+        return SpeechletResponse.newTellResponse(speech, card);
     }
 		
 
