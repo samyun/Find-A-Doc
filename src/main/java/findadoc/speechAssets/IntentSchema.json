@@ -31,15 +31,6 @@
         }
       ]
     },
-	{
-      "intent": "CoughIntent",
-      "slots": [
-        {
-          "name": "TimeDuration",
-          "type": "AMAZON.DURATION"
-        }
-      ]
-    },
     {
       "intent": "EmotionIntent",
       "slots": []

@@ -117,23 +117,46 @@ public class findadocManager {
 	}
 
 	public SpeechletResponse getSleepIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
+		//instantiate a new runner
+		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+		
+		String sleepTime =
+				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
+		
+		if (sleepTime == null) {
+            String speechText = "How long have you been experiencing this?";
+			
+            String responseText = "How long have you been experiencing this symptom? Say Stop to exit.";
+            return getAskSpeechletResponse(speechText, responseText);
+        }
+		
+		return runner.makeUpAFunction(sleepTime, SymptomType.Sleep);
+		
 	}
 
 	public SpeechletResponse getEmotionIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
+		//instantiate a new runner
+		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+
+		return runner.makeUpAFunction("none", SymptomType.Emotion);
+		
 	}
 
 	public SpeechletResponse getToothIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
+		//instantiate a new runner
+		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+		
+		
+		return runner.makeUpAFunction("none", SymptomType.Tooth);
+		
 	}
 
 	public SpeechletResponse getVisionIntentResponse(Intent intent, Session session, SkillContext skillContext) {
-		// TODO Auto-generated method stub
-		return null;
+		//instantiate a new runner
+		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
+
+		return runner.makeUpAFunction("none", SymptomType.Vision);
+		
 	}
     
 //

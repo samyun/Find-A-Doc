@@ -16,27 +16,27 @@ public class EnumTest {
 
         switch (symptom) {
             case Pain: 
-                System.out.println("Mondays are bad.");
+                getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
                 break;
 
             case Sneeze: 
-                System.out.println("Fridays are better.");
+                getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
                 break;
 
             case Sleep:
-            	System.out.println("Fridays are better.");
+            	getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
                 break;
                 
             case Emotion: 
-                System.out.println("Weekends are best.");
+                getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
                 break;
 
             case Tooth:
-            	System.out.println("garbage here.");
+            	getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
             	break;
             
             case Vision:
-            	System.out.println("more garbage.");
+            	getadoc("takes the symptom based on the case,reads the docotr info from the areas.put");
             	break;
         }
     }
