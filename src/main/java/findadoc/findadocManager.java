@@ -460,7 +460,7 @@ public class findadocManager {
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
         card.setTitle("Find A Doc");
-        card.setContent("Successfully synced with the FHIR service");
+        card.setContent("Successfully found a doctor near you");
 
         // Create the plain text output.
         SsmlOutputSpeech speech = new SsmlOutputSpeech();
