@@ -21,7 +21,7 @@
       "intent": "SneezeIntent",
       "slots": [
         {
-          "name": "Time Duration",
+          "name": "TimeDuration",
           "type": "AMAZON.DURATION"
         }
       ]
@@ -46,17 +46,23 @@
     },
     {
       "intent": "EmotionIntent",
-      "slots":
+      "slots": []
     },
     {
       "intent": "HelpIntent",
+      "slots": []
     },
     {
       "intent": "ExitIntent",
+      "slots": []
     },
     {
       "intent": "ToothIntent",
+      "slots": []
       },
     {
       "intent": "VisionIntent",
-      },
+      "slots": []
+      }
+  ]
+}
