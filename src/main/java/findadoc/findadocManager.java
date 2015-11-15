@@ -30,15 +30,20 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
  */
 public class findadocManager {
     /**
-     * Intent slot for drug name.
+     * Intent slot for the type of pain.
      */
-    private static final String SLOT_DRUG_NAME = "DrugName";
+    private static final String TYPE_PAIN = "TypeOfPain";
 
     /**
-     * Intent slot for number of doses taken.
+     * Intent slot for area of body with the issue.
      */
-    private static final String SLOT_NUM_DOSES = "NumDoses";
+    private static final String TYPE_AREA = "AreaOfPain";
 
+    /**
+     * Intent slot for duration.
+     */
+    private static final String AMAZON_DURATION = "TimeDuration";
+    
     private final findadocDao findadocDao;
 
     public findadocManager(final AmazonDynamoDBClient amazonDynamoDbClient) {
