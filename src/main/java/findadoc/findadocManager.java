@@ -102,15 +102,16 @@ public class findadocManager {
 		//instantiate a new runner
 		findadocRunner runner = findadocRunner.newInstance(session, findadocRunnerData.newInstance());
 		
-		String painTime =
+		String sneezeTime =
 				findadocTextUtil.getDurationText(intent.getSlot(SLOT_AMAZON_DURATION).getValue());
 		
-		if (painTime == null) {
+		if (sneezeTime == null) {
             String speechText = "How long have you been experiencing this?";
 			
             String responseText = "How long have you been experiencing this symptom? Say Stop to exit.";
             return getAskSpeechletResponse(speechText, responseText);
         }
+		
 		
 	}
 
