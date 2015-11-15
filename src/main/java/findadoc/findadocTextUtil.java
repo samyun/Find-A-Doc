@@ -14,18 +14,19 @@ public final class findadocTextUtil {
     /**
      * List of drug names blacklisted for this app.
      */
-    private static final List<String> NAME_BLACKLIST = Arrays.asList("drug", "drugs", 
-    												"pill", "pills", "med", "meds", "medicine",
-    												"tablet", "tablets", "dose", "doses", "lozenge",
-    												"lozenges");
+    private static final List<String> NAME_WhiteLIST = Arrays.asList("leg", "legs", 
+    												"arm", "arms", "feet", "foot", "knee",
+    												"knees", "back", "head", "shoulder", "shoulders",
+    												"hands", "hand");
 
+												
     /**
      * Text of complete help.
      */
     public static final String COMPLETE_HELP =
 
 
-            "Here's some things you can say. Did I take my medicine, I have taken 1 pill of ibuprofin, "
+            "Here's some things you can say. My neck has hurt for 1 day, "
                     + "and exit.";
 
     /**
@@ -57,10 +58,10 @@ public final class findadocTextUtil {
         }
 
         // if the name is on our blacklist, it must be mis-recognition
-        if (NAME_BLACKLIST.contains(cleanedName)) {
-            return null;
+        if (Name_WHITELIST.contains(cleanedName)) {
+           return cleanedName; 
         }
 
-        return cleanedName;
+        return null;
     }
 }

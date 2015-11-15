@@ -67,7 +67,7 @@ public class findadocManager {
         String speechText, repromptText;
         findadocRunner runner = findadocDao.getfindadocRunner(session);
 
-        speechText = "Welcome to Echo M D, What can I do for you?";
+        speechText = "Welcome to Find A Doc, What can I do for you?";
 		repromptText = findadocTextUtil.NEXT_HELP;
         return getAskSpeechletResponse(speechText, repromptText);
     }
@@ -371,7 +371,7 @@ public class findadocManager {
 		String ssmlSpeech = "<speak>Successfully synced with the <phoneme alphabet=\"x-sampa\" ph=\"faI@r/\">FHIR</phoneme> service</speak>";
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Echo, M.D.");
+        card.setTitle("Find A Doc");
         card.setContent("Successfully synced with the FHIR service");
 
         // Create the plain text output.
@@ -412,7 +412,7 @@ public class findadocManager {
     private SpeechletResponse getAskSpeechletResponse(String speechText, String repromptText) {
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Echo, M.D.");
+        card.setTitle("Find A Doc");
         card.setContent(speechText);
 
         // Create the plain text output.
@@ -438,7 +438,7 @@ public class findadocManager {
     private SpeechletResponse getTellSpeechletResponse(String speechText) {
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Echo, M.D.");
+        card.setTitle("Find A Doc");
         card.setContent(speechText);
 
         // Create the plain text output.
