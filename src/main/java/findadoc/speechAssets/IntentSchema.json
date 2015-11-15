@@ -1,33 +1,62 @@
 {
   "intents": [
     {
-      "intent": "NeedToTakeIntent",
-      "slots": []
-    },
-    {
-      "intent": "JustTookIntent",
+      "intent": "PainIntent",
       "slots": [
         {
-          "name": "DrugName",
-          "type": "LIST_OF_DRUG_NAMES"
+          "name": "TimeDuration",
+          "type": "AMAZON.DURATION"
         },
         {
-          "name": "NumDoses",
-          "type": "AMAZON.NUMBER"
+          "name": "TypeOfPain",
+          "type": "TYPE_PAIN"
+        },
+        {
+          "name": "AreaOfPain",
+          "type": "TYPE_AREA"
         }
       ]
     },
     {
-      "intent": "ResetPlayersIntent",
-      "slots": []
+      "intent": "SneezeIntent",
+      "slots": [
+        {
+          "name": "Time Duration",
+          "type": "AMAZON.DURATION"
+        }
+      ]
+    },
+	{
+      "intent": "SleepIntent",
+      "slots": [
+        {
+          "name": "TimeDuration",
+          "type": "AMAZON.DURATION"
+        }
+      ]
+    },
+	{
+      "intent": "CoughIntent",
+      "slots": [
+        {
+          "name": "TimeDuration",
+          "type": "AMAZON.DURATION"
+        }
+      ]
+    },
+    {
+      "intent": "EmotionIntent",
+      "slots":
     },
     {
       "intent": "HelpIntent",
-      "slots": []
     },
     {
       "intent": "ExitIntent",
-      "slots": []
-    }
-  ]
-}
+    },
+    {
+      "intent": "ToothIntent",
+      },
+    {
+      "intent": "VisionIntent",
+      },
