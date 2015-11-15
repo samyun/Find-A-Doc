@@ -1,0 +1,11 @@
+The following is how the Amazon.Duration outputs for a given input. 
+
+For example, if Alexa recognized "five minutes" as the slot, the output is PT5M.
+
+Seconds: PT*S
+Minutes: PT*M
+Hours: PT*H
+Days: P*D
+Weeks: P*W
+Months: P*M
+Years: P*Y
